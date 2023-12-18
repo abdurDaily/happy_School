@@ -24,7 +24,7 @@ class FacultystaffController extends Controller
     // ALL EMPLOYEE'S SHOW HERE !!
     public function showEmployee()
     {
-        $allEmployee = Facultystaff::all();
+        $allEmployee = Facultystaff::simplePaginate(3);
         return view('admin.employee.listEmployee', compact('allEmployee'));
     }
 
@@ -42,9 +42,8 @@ class FacultystaffController extends Controller
     {
         Facultystaff::findOrFail($id)->delete();
         toast('delete employee!');
-        return back();
+        return redirect()->route('admin.employee.show');
     }
-
 
 
     // STORE AND UPDATE EMPLOYEE DATA
@@ -87,5 +86,14 @@ class FacultystaffController extends Controller
         $employeeData->save();
         Alert::success('Succcess');
         return back();
+    }
+
+
+    // SEARCH EMPLOYEE 
+    public function searchEmployee(Request $request){
+        $search = $request->search_employee;
+        $employees = Facultystaff::query()->where('employee_name', 'LIKE', "%{$search}%")->get();
+        return view('admin.employee.searchEmployee',compact('employees'));
+        
     }
 }

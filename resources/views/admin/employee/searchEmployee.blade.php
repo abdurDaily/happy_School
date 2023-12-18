@@ -23,7 +23,7 @@
                                 <th>status</th>
                             </tr>
 
-                            @forelse ($allEmployee as $key => $data)
+                            @forelse ($employees as $key => $data)
                                 <tr>
                                     <td>{{ ++$key }}</td>
                                     <td>{{ $data->employee_name }}</td>
@@ -43,11 +43,11 @@
                                     </td>
                                 </tr>
                             @empty
-                                
+                                <h4 class="text-danger">no serach data found !</h4>
                             @endforelse
                         </table>
                         <br><br>
-                        {{ $allEmployee->links() }}
+                        {{-- {{ $allEmployee->links() }} --}}
                     </div>
                 </div>
             </div>
@@ -58,23 +58,5 @@
 
 
 
-@section('search')
-<div class="navbar-nav align-items-center">
-    <div class="nav-item d-flex align-items-center  border-light rounded px-3">
-      <i class="bx bx-search fs-4 lh-0"></i>
-      <form action="{{ route('admin.employee.search') }}" method="post">
-        @csrf
-        <div class="btn-group">
-            <input
-            type="text" name="search_employee"
-            class="form-control border-0 shadow-none"
-            placeholder="Search..."
-            aria-label="Search..."
-          />
-          <button class="btn btn-primary">Search</button>
-          </div>
-      </form>
-    </div>
-  </div>
-@endsection
+
 @endsection

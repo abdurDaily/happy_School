@@ -189,17 +189,7 @@
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
               <!-- Search -->
-              <div class="navbar-nav align-items-center">
-                <div class="nav-item d-flex align-items-center border border-light rounded px-3">
-                  <i class="bx bx-search fs-4 lh-0"></i>
-                  <input
-                    type="text"
-                    class="form-control border-0 shadow-none"
-                    placeholder="Search..."
-                    aria-label="Search..."
-                  />
-                </div>
-              </div>
+              @yield('search')
               <!-- /Search -->
               {{-- <a target="_blank" href="{{ route('frontend.home') }}" class="btn btn-primary ms-4">Visit Website</a> --}}
 

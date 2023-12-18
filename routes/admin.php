@@ -42,16 +42,6 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::get('/edit-employee/{id}', [FacultystaffController::class, 'editEmployee'])->name('employee.edit');
     Route::put('/update-employee/{id?}', [FacultystaffController::class, 'storeAndUpdate'])->name('employee.update');
     Route::get('/delete-employee/{id}', [FacultystaffController::class, 'deleteEmployee'])->name('employee.delete');
+    Route::post('/search-employee', [FacultystaffController::class, 'searchEmployee'])->name('employee.search');
 });
 //FACULTY AND STAFF END 
-
-// Route::prefix('')->controller()->name('')->group(function(){
-//     Route::get('/', 'index')->name('index');
-//     Route::get('/create', 'create')->name('create');
-//     Route::post('/store', 'store')->name('store');
-//     Route::get('/show/{id}', 'show')->name('show');
-//     Route::get('/edit/{id}', 'edit')->name('edit');
-//     Route::put('/update/{id}', 'update')->name('update');
-//     Route::delete('/delete/{id}', 'destroy')->name('delete');
-//     Route::get('/change-status', 'change_status')->name('change_status');
-// });
