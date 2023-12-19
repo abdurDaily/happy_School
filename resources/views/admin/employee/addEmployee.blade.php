@@ -60,7 +60,10 @@
 
                                         <div class="col-lg-4  text-center">
                                             <label for="employee_image">
-                                                <img style="max-width: 250px; height:250px; object-fit: cover;"  class="profileImagePicture" src="{{ asset('custom_img/placeholder_image.png') }}" alt="">
+                                                <img style="max-width: 250px; height:250px; object-fit: cover; border-radius:50%; cursor:pointer; padding:0px; border-radius: 150px;
+                                               
+                                                box-shadow:  24px 24px 47px #b5b5b574,
+                                                             -24px -24px 47px #ffffff;"  class="profileImagePicture" src="{{ asset('custom_img/placeholder_image.png') }}" alt="">
                                             </label>
                                             <input type="file"  name="employee_image" id="employee_image" class="form-control d-none">
                                             @error('employee_image')

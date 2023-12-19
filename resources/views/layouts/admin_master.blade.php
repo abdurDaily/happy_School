@@ -43,6 +43,10 @@
       rel="stylesheet"
     />
 
+    {{-- FONT AWESOME  --}}
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/fontAesome.css') }}">
+
+
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="{{ asset('backend/assets/vendor/fonts/boxicons.css') }}" />
 
@@ -56,8 +60,8 @@
 
     <link rel="stylesheet" href="{{ asset('backend/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
 
-
-
+    
+    
     <!-- Page CSS -->
     @stack('additional_css')
     <!-- Helpers -->
@@ -152,9 +156,11 @@
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
             </li>
+
+            {{-- EMPLOYEE START --}}
             <li class="menu-item" style="">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <i class="fa-solid fa-people-group"></i> &nbsp;
                 <div data-i18n="Layouts">Employee</div>
               </a>
         
@@ -172,6 +178,32 @@
                 </li>
               </ul>
             </li>
+            {{-- EMPLOYEE START --}}
+
+
+            {{-- NOTICE START --}}
+            <li class="menu-item" style="">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="fa-solid fa-note-sticky"></i> &nbsp;
+                <div data-i18n="Layouts">Notice</div>
+              </a>
+        
+              <ul class="menu-sub">
+        
+                <li class="menu-item">
+                  <a href="{{ route('admin.notice.create') }}" class="menu-link">
+                    <div data-i18n="Without menu">add notice</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{ route('admin.notice.show') }}" class="menu-link">
+                    <div data-i18n="Without menu">notice list</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            {{-- NOTICE START --}}
+
             </ul>
         </aside>
         <!-- / Menu -->

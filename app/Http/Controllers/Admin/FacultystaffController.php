@@ -24,7 +24,7 @@ class FacultystaffController extends Controller
     // ALL EMPLOYEE'S SHOW HERE !!
     public function showEmployee()
     {
-        $allEmployee = Facultystaff::simplePaginate(3);
+        $allEmployee = Facultystaff::latest()->simplePaginate(3);
         return view('admin.employee.listEmployee', compact('allEmployee'));
     }
 
@@ -69,23 +69,22 @@ class FacultystaffController extends Controller
         $employeeData =  Facultystaff::findOrNew($id);
         if ($request->hasFile('employee_image')) {
             $extension = $request->employee_image->extension();
-            $uniqName = $request->employee_name . "-" . uniqid($extension) . "." . $extension;
+            $uniqName = $request->employee_name . "-" . uniqid() . "." . $extension;
             $path = $request->employee_image->storeAs('employee', $uniqName, 'public');
         }
+            $employeeData->employee_name = $request->employee_name;
+            $employeeData->employee_designation = $request->employee_designation ?? $employeeData->employee_designation;
+            $employeeData->employee_phone = $request->employee_phone ?? $employeeData->employee_phone;
+            $employeeData->employee_email = $request->employee_email ?? $employeeData->employee_email;
+            $employeeData->employee_join_date = $request->employee_join_date ?? $employeeData->employee_join_date;
+            $employeeData->employee_about = $request->employee_about ?? $employeeData->employee_about;
+            if ($request->hasFile('employee_image')) {
 
-        $employeeData->employee_name = $request->employee_name;
-        $employeeData->employee_designation = $request->employee_designation ?? $employeeData->employee_designation;
-        $employeeData->employee_phone = $request->employee_phone ?? $employeeData->employee_phone;
-        $employeeData->employee_email = $request->employee_email ?? $employeeData->employee_email;
-        $employeeData->employee_join_date = $request->employee_join_date ?? $employeeData->employee_join_date;
-        $employeeData->employee_about = $request->employee_about ?? $employeeData->employee_about;
-        if ($request->hasFile('employee_image')) {
-
-            $employeeData->employee_image = env('APP_URL') . 'storage/' .  $path;
-        }
-        $employeeData->save();
-        Alert::success('Succcess');
-        return back();
+                $employeeData->employee_image = env('APP_URL') . 'storage/' .  $path;
+            }
+            $employeeData->save();
+            Alert::success('Succcess');
+            return redirect()->route('admin.employee.show');
     }
 
 

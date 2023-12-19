@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FacultystaffController;
+use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\StudentadmissionController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Backend\EnrollmentController;
@@ -45,3 +46,19 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::post('/search-employee', [FacultystaffController::class, 'searchEmployee'])->name('employee.search');
 });
 //FACULTY AND STAFF END 
+
+
+
+
+// NOTICE START 
+Route::middleware(['admin:admin'])->group(function () {
+    Route::get('/create-notice', [NoticeController::class, 'createNotice'])->name('notice.create');
+    Route::get('/show-notice', [NoticeController::class, 'showNotice'])->name('notice.show');
+    Route::post('/store-notice', [NoticeController::class, 'storeAndUpdateNotice'])->name('notice.store');
+    Route::get('/edit-notice/{id}', [NoticeController::class, 'editNotice'])->name('notice.edit');
+    Route::put('/update-notice/{id?}', [NoticeController::class, 'storeAndUpdateNotice'])->name('notice.update');
+    Route::get('/delete-notice/{id}', [NoticeController::class, 'deleteNotice'])->name('notice.delete');
+    Route::post('/search-notice', [NoticeController::class, 'searchNotice'])->name('notice.search');
+});
+
+// NOTICE END 

@@ -37,8 +37,8 @@
                                     <td>{{ $data->employee_about }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{ route('admin.employee.edit', $data->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                            <a href="{{ route('admin.employee.delete', $data->id) }}" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="{{ route('admin.employee.edit', $data->id) }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <a href="{{ route('admin.employee.delete', $data->id) }}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
