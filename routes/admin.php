@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FacultystaffController;
+use App\Http\Controllers\Admin\NewseventController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\StudentadmissionController;
 use App\Http\Controllers\Admin\StudentController;
@@ -60,5 +61,17 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::get('/delete-notice/{id}', [NoticeController::class, 'deleteNotice'])->name('notice.delete');
     Route::post('/search-notice', [NoticeController::class, 'searchNotice'])->name('notice.search');
 });
-
 // NOTICE END 
+
+
+
+// NEWS AND EVENT START  
+Route::middleware(['admin:admin'])->group(function () {
+    Route::get('/create-event', [NewseventController::class, 'createEvent'])->name('event.create');
+    Route::post('/store-event', [NewseventController::class, 'storeOrUpdate'])->name('event.store');
+    Route::get('/list-event', [NewseventController::class, 'listEvent'])->name('event.list');
+    Route::get('/edit-event/{id}', [NewseventController::class, 'editEvent'])->name('event.edit');
+    Route::put('/update-event/{id?}', [NewseventController::class, 'storeOrUpdate'])->name('event.update');
+    Route::get('/delete-event/{id}', [NewseventController::class, 'deleteOrUpdate'])->name('event.delete');
+});
+// NEWS AND EVENT END 

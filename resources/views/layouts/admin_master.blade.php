@@ -160,7 +160,7 @@
             {{-- EMPLOYEE START --}}
             <li class="menu-item" style="">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="fa-solid fa-people-group"></i> &nbsp;
+                <i class="fa-solid fa-people-group"></i> &nbsp; &nbsp;&nbsp;
                 <div data-i18n="Layouts">Employee</div>
               </a>
         
@@ -184,7 +184,7 @@
             {{-- NOTICE START --}}
             <li class="menu-item" style="">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="fa-solid fa-note-sticky"></i> &nbsp;
+                <i class="fa-solid fa-note-sticky"></i> &nbsp; &nbsp;&nbsp;
                 <div data-i18n="Layouts">Notice</div>
               </a>
         
@@ -203,6 +203,32 @@
               </ul>
             </li>
             {{-- NOTICE START --}}
+
+
+            {{-- NEWS AND EVENT  START --}}
+            <li class="menu-item" style="">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="fa-solid fa-newspaper"></i> &nbsp; &nbsp;&nbsp; 
+                <div data-i18n="Layouts">Event's</div>
+              </a>
+        
+              <ul class="menu-sub">
+        
+                <li class="menu-item">
+                  <a href="{{ route('admin.event.create') }}" class="menu-link">
+                    <div data-i18n="Without menu">Add new event</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{ route('admin.event.list') }}" class="menu-link">
+                    <div data-i18n="Without menu">Event list</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            {{-- NEWS AND EVENT  START --}}
+
+
 
             </ul>
         </aside>

@@ -79,7 +79,6 @@ class FacultystaffController extends Controller
             $employeeData->employee_join_date = $request->employee_join_date ?? $employeeData->employee_join_date;
             $employeeData->employee_about = $request->employee_about ?? $employeeData->employee_about;
             if ($request->hasFile('employee_image')) {
-
                 $employeeData->employee_image = env('APP_URL') . 'storage/' .  $path;
             }
             $employeeData->save();
