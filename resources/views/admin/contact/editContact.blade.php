@@ -79,7 +79,7 @@
             toolbar: {
                 items: [
 
-                    'bulletedList', 'numberedList', 'todoList', '|',
+                'bulletedList', 'numberedList', '|',
                     'outdent', 'indent', '|',
                     'undo', 'redo',
                     '-',
@@ -136,7 +136,7 @@
             toolbar: {
                 items: [
 
-                    'bulletedList', 'numberedList', 'todoList', '|',
+                'bulletedList', 'numberedList', '|',
                     'outdent', 'indent', '|',
                     'undo', 'redo',
                     '-',

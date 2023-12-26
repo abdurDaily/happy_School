@@ -10,10 +10,12 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FacultystaffController;
 use App\Http\Controllers\Admin\NewseventController;
 use App\Http\Controllers\Admin\NoticeController;
+use App\Http\Controllers\Admin\RoutineController;
 use App\Http\Controllers\Admin\StudentadmissionController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Backend\EnrollmentController;
 use App\Http\Controllers\Backend\ResultController;
+use App\Models\Admin\Routine;
 
 //Guest Route Group
 Route::middleware(['guest'])->group(function () {
@@ -87,3 +89,11 @@ Route::middleware(['admin:admin'])->group(function (){
   Route::get('/contact-delete/{id}', [ContactController::class, 'contactDelete'])->name('contact.delete');
 });
 /** CONTACT END  */
+
+
+
+/**{---ROUTINE START----} */
+Route::middleware(['admin:admin'])->group(function (){
+    Route::get('/contact-routine', [RoutineController ::class, 'createRoutine'])->name('routine.create');
+});
+/**{---ROUTINE END----} */

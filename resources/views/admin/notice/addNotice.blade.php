@@ -24,7 +24,7 @@
                                 @enderror
 
                                 <label for="notice_image" class="mt-3">Notice Upload with PDF form &nbsp; <span class="text-danger">*</span></label>
-                                <input type="file" name="notice_image" id="notice_image" class="form-control p-4">
+                                <input accept=".pdf" type="file" name="notice_image" id="notice_image" class="form-control p-4">
                                 @error('notice_image')
                                     <span class="text-danger">{{ $message }}</span> <br>
                                 @enderror
