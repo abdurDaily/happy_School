@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\TeacherController;
@@ -50,7 +51,6 @@ Route::middleware(['admin:admin'])->group(function () {
 
 
 
-
 // NOTICE START 
 Route::middleware(['admin:admin'])->group(function () {
     Route::get('/create-notice', [NoticeController::class, 'createNotice'])->name('notice.create');
@@ -75,3 +75,15 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::get('/delete-event/{id}', [NewseventController::class, 'deleteOrUpdate'])->name('event.delete');
 });
 // NEWS AND EVENT END 
+
+
+/** CONTACT START */
+Route::middleware(['admin:admin'])->group(function (){
+  Route::get('/contact-create', [ContactController::class, 'createContact'])->name('contact.create');
+  Route::post('/contact-store', [ContactController::class, 'contactCreateOrStore'])->name('contact.store');
+  Route::get('/contact-list', [ContactController::class, 'contactList'])->name('contact.list');
+  Route::get('/contact-edit/{id}', [ContactController::class, 'contactEdit'])->name('contact.edit');
+  Route::post('/contact-update/{id?}', [ContactController::class, 'contactCreateOrStore'])->name('contact.update');
+  Route::get('/contact-delete/{id}', [ContactController::class, 'contactDelete'])->name('contact.delete');
+});
+/** CONTACT END  */

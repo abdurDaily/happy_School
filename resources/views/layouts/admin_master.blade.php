@@ -184,7 +184,7 @@
             {{-- NOTICE START --}}
             <li class="menu-item" style="">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="fa-solid fa-note-sticky"></i> &nbsp; &nbsp;&nbsp;
+                <i style="font-size: 18px;" class="fa-solid fa-note-sticky"></i> &nbsp; &nbsp;&nbsp;
                 <div data-i18n="Layouts">Notice</div>
               </a>
         
@@ -208,7 +208,7 @@
             {{-- NEWS AND EVENT  START --}}
             <li class="menu-item" style="">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="fa-solid fa-newspaper"></i> &nbsp; &nbsp;&nbsp; 
+                <i style="font-size: 18px;" class="fa-solid fa-newspaper"></i> &nbsp; &nbsp;&nbsp; 
                 <div data-i18n="Layouts">Event's</div>
               </a>
         
@@ -228,6 +228,30 @@
             </li>
             {{-- NEWS AND EVENT  START --}}
 
+
+            {{-- CONTACT START --}}
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-envelope"></i>
+                <div data-i18n="Front Pages">Contact</div>
+              </a>
+              <ul class="menu-sub">
+                  <li class="menu-item">
+                    <a href="{{ route('admin.contact.create') }}" class="menu-link">
+                      <div data-i18n="Landing">Creact Contact</div>
+                    </a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="{{ route('admin.contact.list') }}" class="menu-link">
+                      <div data-i18n="Pricing">Contact List</div>
+                    </a>
+                  </li>
+              </ul>
+            </li>
+            {{-- CONTACT END  --}}
+
+
+            
 
 
             </ul>

@@ -65,7 +65,7 @@
                                                 box-shadow:  24px 24px 47px #b5b5b574,
                                                              -24px -24px 47px #ffffff;"  class="profileImagePicture" src="{{ asset('custom_img/placeholder_image.png') }}" alt="">
                                             </label>
-                                            <input type="file"  name="employee_image" id="employee_image" class="form-control d-none">
+                                            <input type="file" accept=".png, .jpg, .jpeg"  name="employee_image" id="employee_image" class="form-control d-none">
                                             @error('employee_image')
                                                 <strong class="text-danger">{{ $message }}</strong>
                                             @enderror
