@@ -6,13 +6,14 @@
                 <div class="col-lg-10 mx-auto">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Add a New Noutine</h4>
+                            <h4>Edit Routine..</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.routine.store') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('admin.routine.update', $routineData->id) }}" method="post" enctype="multipart/form-data">
+                            @method('PUT')
                             @csrf
                                 <label for="routine_title">Routine Title &nbsp; <span class="text-danger">*</span> </label>
-                                <input type="text" name="routine_title" id="routine_title" class="form-control" placeholder="enter notice title">
+                                <input value="{{ $routineData->routine_title }}" type="text" name="routine_title" id="routine_title" class="form-control" placeholder="enter notice title">
                                 @error('routine_title')
                                     <span class="text-danger">{{ $message }}</span> <br>
                                 @enderror

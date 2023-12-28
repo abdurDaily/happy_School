@@ -208,7 +208,7 @@
             {{-- NEWS AND EVENT  START --}}
             <li class="menu-item" style="">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i style="font-size: 18px;" class="fa-solid fa-newspaper"></i> &nbsp; &nbsp;&nbsp; 
+                <i style="font-size: 18px;" class="fa-solid fa-newspaper"></i> &nbsp; &nbsp;&nbsp;
                 <div data-i18n="Layouts">Event's</div>
               </a>
         
@@ -232,7 +232,7 @@
             {{-- CONTACT START --}}
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-envelope"></i>
+                <i style="font-size: 18px" class="fa-solid fa-location-dot"></i> &nbsp; &nbsp;
                 <div data-i18n="Front Pages">Contact</div>
               </a>
               <ul class="menu-sub">
@@ -249,6 +249,62 @@
               </ul>
             </li>
             {{-- CONTACT END  --}}
+
+
+
+            
+            {{-- ROUTINE START --}}
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i style="font-size: 18px;" class="fa-solid fa-bell"></i> &nbsp; &nbsp;
+                <div data-i18n="Front Pages">Routine</div>
+              </a>
+              <ul class="menu-sub">
+                  <li class="menu-item">
+                    <a href="{{ route('admin.routine.create') }}" class="menu-link">
+                      <div data-i18n="Landing">Add Routine</div>
+                    </a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="{{ route('admin.routine.list') }}" class="menu-link">
+                      <div data-i18n="Pricing">Routine List</div>
+                    </a>
+                  </li>
+              </ul>
+            </li>
+            {{-- ROUTINE END  --}}
+
+            
+            {{-- ABOUT START --}}
+            <li class="menu-item">
+              <a href="{{ route('admin.about.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">About</div>
+              </a>
+            </li>
+            {{-- ROUTINE END  --}}
+
+
+
+            {{-- IMAGE START --}}
+            <li class="menu-item">
+              <a href="{{ route('admin.about.index') }}" class="menu-link">
+                <i style="font-size: 18px" class="fa-regular fa-image"></i> &nbsp; &nbsp;
+                <div data-i18n="Basic">Image Upload</div>
+              </a>
+            </li>
+            {{-- IMAGE END  --}}
+
+
+
+            {{-- VIDEO START --}}
+            <li class="menu-item">
+              <a href="{{ route('admin.about.index') }}" class="menu-link">
+                <i style="font-size: 18px" class="fa-brands fa-youtube"></i>  &nbsp; &nbsp;
+                <div data-i18n="Basic">Video Link</div>
+              </a>
+            </li>
+            {{-- VIDEO END  --}}
 
 
             

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ContactController;
@@ -95,5 +96,22 @@ Route::middleware(['admin:admin'])->group(function (){
 /**{---ROUTINE START----} */
 Route::middleware(['admin:admin'])->group(function (){
     Route::get('/contact-routine', [RoutineController ::class, 'createRoutine'])->name('routine.create');
+    Route::post('/store-routine', [RoutineController ::class, 'storeOrUpdateRoutine'])->name('routine.store');
+    Route::get('/list-routine', [RoutineController ::class, 'listRoutine'])->name('routine.list');
+    Route::get('/edit-routine/{id}', [RoutineController ::class, 'editRoutine'])->name('routine.edit');
+    Route::put('/update-routine/{id?}', [RoutineController ::class, 'storeOrUpdateRoutine'])->name('routine.update');
+    Route::get('/delete-routine/{id}', [RoutineController ::class, 'deleteRoutine'])->name('routine.delete');
 });
 /**{---ROUTINE END----} */
+
+
+
+
+/**__{--ABOUT START--}__ */
+Route::middleware(['admin:admin'])->group(function (){
+    Route::get('/about-index', [AboutController ::class, 'aboutIndex'])->name('about.index');
+});
+/**__{--ABOUT END --}__ */
+
+
+
