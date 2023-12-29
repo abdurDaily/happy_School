@@ -288,7 +288,7 @@
 
             {{-- IMAGE START --}}
             <li class="menu-item">
-              <a href="{{ route('admin.about.index') }}" class="menu-link">
+              <a href="{{ route('admin.image.index') }}" class="menu-link">
                 <i style="font-size: 18px" class="fa-regular fa-image"></i> &nbsp; &nbsp;
                 <div data-i18n="Basic">Image Upload</div>
               </a>

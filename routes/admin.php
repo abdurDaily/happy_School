@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FacultystaffController;
+use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\NewseventController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\RoutineController;
@@ -113,5 +114,16 @@ Route::middleware(['admin:admin'])->group(function (){
 });
 /**__{--ABOUT END --}__ */
 
+
+
+
+/**__{--IMAGE START--}__ */
+Route::middleware(['admin:admin'])->group(function (){
+    Route::get('/image-index', [ImageController ::class, 'imageIndex'])->name('image.index');
+    Route::post('/image-store', [ImageController ::class, 'imageStoreOrUpdate'])->name('image.store');
+    Route::get('/image-edit/{id}', [ImageController ::class, 'imageEdit'])->name('image.edit');
+    Route::put('/image-update/{id?}', [ImageController ::class, 'imageStoreOrUpdate'])->name('image.update');
+});
+/**__{--IMAGE END--}__ */
 
 
