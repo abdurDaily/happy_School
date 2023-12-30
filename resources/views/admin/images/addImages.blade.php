@@ -10,6 +10,7 @@
             padding: 20px;
             border-top-right-radius: 35px;
             border-bottom-left-radius: 35px;
+            
         }
         #image .img-card::before{
             content: "";
@@ -59,6 +60,8 @@
     <section id="image">
         <div class="container">
             <div class="row">
+
+
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
@@ -70,10 +73,10 @@
                                
                                 @forelse ($allImages as $data)
                                     <div class="col-lg-3 img-card">
-                                        <img style="width:100%;  object-fit:contain;" src="{{ $data->galary_img }}" alt="{{ $data->img_title }}">
+                                        <img style="width:100%; height:100%; object-fit:cover;" src="{{ $data->galary_img }}" alt="{{ $data->img_title }}">
                                         <div class="icons">
                                             <a data-id="{{ $data->id }}" data-bs-toggle="modal" data-bs-target="#exampleModal" href="{{ route('admin.image.edit', $data->id) }}" class="btn btn-primary btn-sm galleryEditBtn"><i class="fa-solid fa-pen-to-square"></i></a>
-                                            <a href="" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+                                            <a href="{{ route('admin.image.delete',$data->id) }}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
                                         </div>
                                     </div>
                                 @empty
@@ -91,7 +94,7 @@
 
         
 
-        <!--EDIT Modal -->
+        <!--EDIT Modal Start -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -102,13 +105,13 @@
                 <div class="modal-body">
                
 
-                    <form action="{{ route('admin.image.update') }}" method="PUT" enctype="multipart/form-data">
+                    <form action="{{ route('admin.image.update') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="row img_group">
                             <div class="col-6">
                                 <label for="galary_img">Select Galary Image</label>
-                                <input type="hidden" class="galleryId">
+                                <input type="hidden" name="id" class="galleryId">
                                 <input accept=".png,.jpg,.jpeg" type="file" id="galary_img" name="galary_img" class="form-control p-3 galary_img">
 
 
@@ -134,14 +137,7 @@
             </div>
             </div>
         </div>
-        {{-- Modal End  --}}
-
-
-
-
-
-
-
+        {{--Edit Modal End  --}}
 
 
 
@@ -184,8 +180,13 @@
             </div>
         </div>
         {{-- ADD MODEL END --}}
-  
     </section>
+
+
+
+
+
+
 
     @push('additional_js')
         <script>
@@ -196,8 +197,6 @@
                 let id = $(this).attr('data-id')
                 galleryId.val(id)
             })
-
-
 
             let img = document.querySelector('.galary_img');
             let img_display = document.querySelector('.galary_display_img');
@@ -215,9 +214,6 @@
                let url =  URL.createObjectURL(e.target.files[0])
                img_display_store.src = url
             })
-
-
-
         </script>
     @endpush
 @endsection

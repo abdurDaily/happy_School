@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\RoutineController;
 use App\Http\Controllers\Admin\StudentadmissionController;
 use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Backend\EnrollmentController;
 use App\Http\Controllers\Backend\ResultController;
 use App\Models\Admin\Routine;
@@ -122,8 +123,17 @@ Route::middleware(['admin:admin'])->group(function (){
     Route::get('/image-index', [ImageController ::class, 'imageIndex'])->name('image.index');
     Route::post('/image-store', [ImageController ::class, 'imageStoreOrUpdate'])->name('image.store');
     Route::get('/image-edit/{id}', [ImageController ::class, 'imageEdit'])->name('image.edit');
-    Route::put('/image-update/{id?}', [ImageController ::class, 'imageStoreOrUpdate'])->name('image.update');
+    Route::put('/image-update', [ImageController ::class, 'imageStoreOrUpdate'])->name('image.update');
+    Route::get('/image-delete/{id}', [ImageController ::class, 'imageDelete'])->name('image.delete');
 });
 /**__{--IMAGE END--}__ */
 
+
+
+/**__{--VIDEO START--}__ */
+Route::middleware(['admin:admin'])->group(function (){
+    Route::get('/video-index', [VideoController ::class, 'videoIndex'])->name('video.index');
+    Route::post('/video-store', [VideoController ::class, 'videoStoreOrUpdate'])->name('video.store');
+});
+/**__{--VIDEO END--}__ */
 

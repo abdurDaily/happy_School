@@ -10,20 +10,22 @@ use RealRashid\SweetAlert\Facades\Alert;
 class ImageController extends Controller
 {
     //IMAGE INDEX 
-    public function imageIndex(){
+    public function imageIndex()
+    {
         $allImages = Image::all();
-        return view('admin.images.addImages',compact('allImages'));
+        return view('admin.images.addImages', compact('allImages'));
     }
 
 
     // IMAGE STORE AND UPDATE 
-    public function imageStoreOrUpdate(Request $request, $id=null)
+    public function imageStoreOrUpdate(Request $request)
     {
+        $id = $request->id;
         $request->validate([
-           'img_title' => 'required',
+            'img_title' => 'required',
         ]);
 
-        if($request->routeIs('admin.image.store')){
+        if ($request->routeIs('admin.image.store')) {
             $request->validate([
                 'galary_img' => 'required|mimes:png,jpeg,jpg',
             ]);
@@ -40,8 +42,9 @@ class ImageController extends Controller
 
 
         $galaryData =  Image::findOrNew($id);
+
         $galaryData->img_title = $request->img_title ??  $galaryData->img_title;
-        
+
         if ($request->hasFile('galary_img')) {
             $galaryData->galary_img = env('APP_URL') . "storage/" . $path;
         }
@@ -52,8 +55,22 @@ class ImageController extends Controller
 
 
     // IMAGE EDIT 
-    public function imageEdit($id){
-       $findedImage = Image::findOrFail($id);
-       return view('admin.images.addImages',compact('findedImage'));
+    public function imageEdit($id)
+    {
+        $findedImage = Image::findOrFail($id);
+
+        $videoUrl = "https://www.youtube.com/watch?v=aPUVUrS2oC0";
+        $convertUrl = str_replace("watch?v=", "embed/", $videoUrl);
+
+        return view('admin.images.addImages', compact('findedImage'));
+    }
+
+
+    // DELETE IMAGE 
+    public function imageDelete($id)
+    {
+        Image::findOrFail($id)->delete();
+        Alert::warning('Deleted Successfully!');
+        return back();
     }
 }

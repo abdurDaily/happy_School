@@ -299,7 +299,7 @@
 
             {{-- VIDEO START --}}
             <li class="menu-item">
-              <a href="{{ route('admin.about.index') }}" class="menu-link">
+              <a href="{{ route('admin.video.index') }}" class="menu-link">
                 <i style="font-size: 18px" class="fa-brands fa-youtube"></i>  &nbsp; &nbsp;
                 <div data-i18n="Basic">Video Link</div>
               </a>
