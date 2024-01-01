@@ -17,9 +17,7 @@ class VideoController extends Controller
     }
 
 
-    // VIDEO STORE AND UPDATE 
-    
-    // IMAGE STORE AND UPDATE 
+    // VIDEO STORE AND UPDATE
     public function videoStoreOrUpdate(Request $request)
     {
         $id = $request->id;
@@ -34,6 +32,20 @@ class VideoController extends Controller
 
         Alert::success('success!');
         return back();
+    }
+
+
+    // EDIT VIDEO 
+    public function videoEdit($id){
+       $editVideoData =  Video::findOrFail($id);
+       return view('admin.videos.videoindex', compact('editVideoData'));
+    }
+
+
+    // DELETE VIDEO 
+    public function videoDelete($id){
+     Video::findOrFail($id)->delete();
+     return back();
     }
 
 }

@@ -15,6 +15,7 @@ class VideoSeeder extends Seeder
     {
         $videoData = new Video();
         $videoData->video_link = "https://www.youtube.com/watch?v=aPUVUrS2oC0";
+        // $videoData->video_thumbnail = "https://www.youtube.com/watch?v=aPUVUrS2oC0";
         $videoData->save();
     }
 }

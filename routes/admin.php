@@ -134,6 +134,9 @@ Route::middleware(['admin:admin'])->group(function (){
 Route::middleware(['admin:admin'])->group(function (){
     Route::get('/video-index', [VideoController ::class, 'videoIndex'])->name('video.index');
     Route::post('/video-store', [VideoController ::class, 'videoStoreOrUpdate'])->name('video.store');
+    Route::get('/video-edit/{id}', [VideoController ::class, 'videoEdit'])->name('video.edit');
+    Route::put('/video-update', [VideoController ::class, 'videoStoreOrUpdate'])->name('video.update');
+    Route::get('/video-delete/{id}', [VideoController ::class, 'videoDelete'])->name('video.delete');
 });
 /**__{--VIDEO END--}__ */
 
