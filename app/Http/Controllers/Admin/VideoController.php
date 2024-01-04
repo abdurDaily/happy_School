@@ -20,7 +20,7 @@ class VideoController extends Controller
     // VIDEO STORE AND UPDATE
     public function videoStoreOrUpdate(Request $request)
     {
-        dd($request->id);
+        // dd($request->id);
         $id = $request->id;
         $request->validate([
             'video_link' => 'required',

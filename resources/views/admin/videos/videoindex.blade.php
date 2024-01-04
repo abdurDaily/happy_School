@@ -82,7 +82,7 @@
 
 
                                 <div class="icons">
-                                    <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id=""
+                                    <a data-bs-toggle="modal" data-bs-target="#staticBackdrop_update" data-id="{{ $data->id }}"
                                         data-bs-toggle="modal" data-bs-target="#exampleModal"
                                         href="{{ route('admin.video.edit', $data->id) }}"
                                         class="btn btn-primary btn-sm galleryEditBtn"><i
@@ -142,7 +142,7 @@
 
 
     <!-- Update Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="staticBackdrop_update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -202,6 +202,9 @@
         <script src="{{ asset('backend/assets/js/venobox.min.js') }}"></script>
 
         <script>
+
+
+
             let galleryEditBtns = $('.galleryEditBtn')
             let galleryId = $('.galleryId')
             galleryEditBtns.click(function() {
