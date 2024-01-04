@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\FacultystaffController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\NewseventController;
 use App\Http\Controllers\Admin\NoticeController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\RoutineController;
 use App\Http\Controllers\Admin\StudentadmissionController;
 use App\Http\Controllers\Admin\StudentController;
@@ -140,3 +141,11 @@ Route::middleware(['admin:admin'])->group(function (){
 });
 /**__{--VIDEO END--}__ */
 
+
+
+/**__{--ROLE START--}__ */
+Route::middleware(['admin:admin'])->group(function (){
+    Route::get('/role-create', [RoleController ::class, 'roleCreate'])->name('role.create');
+    Route::post('/role-store', [RoleController ::class, 'roleStore'])->name('role.store');
+});
+/**__{--ROLE END--}__ */

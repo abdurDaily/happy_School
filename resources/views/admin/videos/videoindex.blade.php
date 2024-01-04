@@ -2,13 +2,15 @@
 @section('admin_main_content')
     @push('additional_css')
         <style>
-            #youtube_video img{
+            #youtube_video img {
                 padding: 5px;
             }
+
             #youtube_video .img-card {
                 position: relative;
                 padding: 0 !important;
             }
+
             #youtube_video .img-card::before {
                 content: "";
                 position: absolute;
@@ -22,6 +24,7 @@
                 transition: 0.5s all;
                 cursor: pointer;
             }
+
             #youtube_video .img-card:hover::before {
                 width: 20%;
                 visibility: visible;
@@ -58,30 +61,36 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h4>Video...</h4>
-                    <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="" class="btn btn-primary px-3">Add New &#43;</a>
+                    <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="" class="btn btn-primary px-3">Add
+                        New &#43;</a>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         @forelse ($allVideoData as $data)
                             <div class="col-md-4 col-lg-3 img-card">
-                                 <?php
-                                    $video_id = explode("?v=", $data->video_link); 
-                                    $video_id = $video_id[1];
-                                 ?>
+                                <?php
+                                $video_id = explode('?v=', $data->video_link);
+                                $video_id = $video_id[1];
+                                ?>
 
-                                <a class="my-custom-links" data-vbtype="iframe" href="{{ str_replace('watch?v=', 'embed/', $data->video_link) }}">
-                                    <img class="img-fluid rounded thumbnail_img" src="{{ "http://img.youtube.com/vi/".$video_id."/maxresdefault.jpg" }}" alt="">
+                                <a class="my-custom-links" data-vbtype="iframe"
+                                    href="{{ str_replace('watch?v=', 'embed/', $data->video_link) }}">
+                                    <img class="img-fluid rounded thumbnail_img"
+                                        src="{{ 'http://img.youtube.com/vi/' . $video_id . '/maxresdefault.jpg' }}"
+                                        alt="">
                                 </a>
 
 
                                 <div class="icons">
-                                    <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                        href="{{ route('admin.video.edit', $data->id) }}" class="btn btn-primary btn-sm galleryEditBtn"><i
+                                    <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id=""
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        href="{{ route('admin.video.edit', $data->id) }}"
+                                        class="btn btn-primary btn-sm galleryEditBtn"><i
                                             class="fa-solid fa-pen-to-square"></i></a> <br>
 
 
-                                    <a href="{{ route('admin.video.delete', $data->id) }}" class="btn btn-danger btn-sm my-2"><i
-                                            class="fa-solid fa-trash"></i></a>
+                                    <a href="{{ route('admin.video.delete', $data->id) }}"
+                                        class="btn btn-danger btn-sm my-2"><i class="fa-solid fa-trash"></i></a>
                                 </div>
                             </div>
                         @empty
@@ -97,67 +106,74 @@
 
 
 
-<!-- store Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <!-- store Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Add Youtube Video link</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            
-                <form action="{{ route('admin.video.store') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                    <div class="row" style="display: inline-flex;">
-                        <div class="col-6">
-                            <label for="video_link">Enter a youtub video link</label>
-                            <input id="video_link" type="text" class="form-control p-3" name="video_link" placeholder="YouTube Video link..">
-                            <button class="btn btn-primary mt-2 w-100" type="submit">Upload</button>
-                        </div>
-                        <div class="col-6" >
-                            <img style="border: 0 !important ; outline:none;" class="form-control thumbnail_display" src="{{ asset('custom_img/img_placeholder.jpg') }}" alt="">
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        </div>
-    </div>
-<!-- Store Modal end-->
-
-
-
-
-<!-- Update Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Add Youtube Video link</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-        
-            <form action="{{ route('admin.video.update') }}" method="post" enctype="multipart/form-data">
-            @csrf
-            @method('put')
-                <div class="row" style="display: inline-flex;">
-                    <div class="col-6">
-                        <label for="video_link">Enter a youtub video link</label>
-                        <input id="video_link" name="video_link" type="text" class="form-control p-3" placeholder="YouTube Video link..">
-                        <button class="btn btn-primary mt-2 w-100" type="submit">Upload</button>
-                    </div>
-                    <div class="col-6" >
-                        <img style="border: 0 !important ; outline:none;" class="form-control thumbnail_display" src="{{ asset('custom_img/img_placeholder.jpg') }}" alt="">
-                    </div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Add Youtube Video link</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </form>
+                <div class="modal-body">
+
+                    <form action="{{ route('admin.video.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row" style="display: inline-flex;">
+                            <div class="col-6">
+                                <label for="video_link">Enter a youtub video link</label>
+                                <input id="video_link" type="text" class="form-control p-3" name="video_link"
+                                    placeholder="YouTube Video link..">
+                                <button class="btn btn-primary mt-2 w-100" type="submit">Upload</button>
+                            </div>
+                            <div class="col-6">
+                                <img style="border: 0 !important ; outline:none;" class="form-control thumbnail_display"
+                                    src="{{ asset('custom_img/img_placeholder.jpg') }}" alt="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
+    <!-- Store Modal end-->
+
+
+
+
+    <!-- Update Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Add Youtube Video link</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form action="{{ route('admin.video.update') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('put')
+                        <div class="row" style="display: inline-flex;">
+                            <div class="col-6">
+                                <label for="video_link">Enter a youtub video link</label>
+                                <input type="hidden" name="id" class="galleryId">
+                                <input id="video_link" name="video_link" type="text" class="form-control p-3"
+                                    placeholder="YouTube Video link..">
+                                <button class="btn btn-primary mt-2 w-100" type="submit">Upload</button>
+                            </div>
+                            <div class="col-6">
+                                <img style="border: 0 !important ; outline:none;" class="form-control thumbnail_display"
+                                    src="{{ asset('custom_img/img_placeholder.jpg') }}" alt="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<!-- Store Modal end-->
+    <!-- Store Modal end-->
 
 
 
@@ -172,34 +188,38 @@
 
 
 
-        
 
 
 
 
 
-        @push('additional_css')
-            <link rel="stylesheet" href="{{ asset('backend/assets/css/venobox.min.css') }}">
-        @endpush
 
-        @push('additional_js')
-            <script src="{{ asset('backend/assets/js/venobox.min.js') }}"></script>
+    @push('additional_css')
+        <link rel="stylesheet" href="{{ asset('backend/assets/css/venobox.min.css') }}">
+    @endpush
 
-            <script>
-                new VenoBox({
-                    selector: '.my-custom-links',
-                });
+    @push('additional_js')
+        <script src="{{ asset('backend/assets/js/venobox.min.js') }}"></script>
 
-                let thumbnail_img = $('.thumbnail_display');
-                $('input[name="video_link"]').keyup(function(){
-                    let videoUrl = $(this).val();
-                    videoUrl = videoUrl.split("?v=");
-                    videoUrl = videoUrl[1];
-                    thumbnail_img.attr('src', `http://img.youtube.com/vi/${videoUrl}/maxresdefault.jpg`)
-                })
-            </script>
+        <script>
+            let galleryEditBtns = $('.galleryEditBtn')
+            let galleryId = $('.galleryId')
+            galleryEditBtns.click(function() {
+                let id = $(this).attr('data-id')
+                galleryId.val(id)
+            })
+            new VenoBox({
+                selector: '.my-custom-links',
+            });
 
-
-        @endpush
-    @endsection
+            let thumbnail_img = $('.thumbnail_display');
+            $('input[name="video_link"]').keyup(function() {
+                let videoUrl = $(this).val();
+                videoUrl = videoUrl.split("?v=");
+                videoUrl = videoUrl[1];
+                thumbnail_img.attr('src', `http://img.youtube.com/vi/${videoUrl}/maxresdefault.jpg`)
+            })
+        </script>
+    @endpush
+@endsection
 <!-- Modal end -->

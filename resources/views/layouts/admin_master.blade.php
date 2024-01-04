@@ -205,6 +205,30 @@
             {{-- NOTICE START --}}
 
 
+            {{-- ROLE START --}}
+            <li class="menu-item" style="">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i style="font-size: 18px;" class="fa-solid fa-note-sticky"></i> &nbsp; &nbsp;&nbsp;
+                <div data-i18n="Layouts">Role Assign</div>
+              </a>
+        
+              <ul class="menu-sub">
+        
+                <li class="menu-item">
+                  <a href="{{ route('admin.role.create') }}" class="menu-link">
+                    <div data-i18n="Without menu">add role</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{ route('admin.notice.show') }}" class="menu-link">
+                    <div data-i18n="Without menu">notice list</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            {{-- ROLE START --}}
+
+
             {{-- NEWS AND EVENT  START --}}
             <li class="menu-item" style="">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -274,6 +298,8 @@
             </li>
             {{-- ROUTINE END  --}}
 
+
+            
             
             {{-- ABOUT START --}}
             <li class="menu-item">
