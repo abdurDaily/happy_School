@@ -13,11 +13,11 @@
                             @csrf
 
                             <label for="about_institute">About Institute</label>
-                            <textarea name="about_institute" id="about_institute" class="form-control" placeholder="about institute....." cols="30" rows="10"></textarea>
+                            <textarea rows="30" name="about_institute" id="about_institute" class="form-control" placeholder="about institute....." cols="30" rows="10"></textarea>
 
-
-                            <input type="file" multiple class="form-control p-4">
-
+                           
+                            <button class="btn btn-primary w-100 mt-3">Submit</button>
+                            
                             </form>
                         </div>
                     </div>
@@ -38,8 +38,8 @@
             toolbar: {
                 items: [
 
-                    'bold', 'italic', 'strikethrough', 'underline', 'code', 'subscript', 'superscript', 'removeFormat', '|',
-                    'bulletedList', 'numberedList', 'todoList', '|',
+                    'bold', 'italic', 'underline', 'subscript', 'superscript','|',
+                    'bulletedList', 'numberedList', '|',
                     'outdent', 'indent', '|',
                     'undo', 'redo',
                     '-',

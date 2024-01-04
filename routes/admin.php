@@ -113,6 +113,9 @@ Route::middleware(['admin:admin'])->group(function (){
 /**__{--ABOUT START--}__ */
 Route::middleware(['admin:admin'])->group(function (){
     Route::get('/about-index', [AboutController ::class, 'aboutIndex'])->name('about.index');
+    Route::get('/about-gallery', [AboutController ::class, 'aboutGallery'])->name('about.galary');
+    Route::post('/store-about-gallery', [AboutController ::class, 'storeUpdateAboutGallery'])->name('store.about.galary');
+    Route::get('/list-about-gallery', [AboutController ::class, 'listAboutGallery'])->name('list.about.galary');
 });
 /**__{--ABOUT END --}__ */
 

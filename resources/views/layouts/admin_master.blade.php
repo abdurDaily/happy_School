@@ -208,7 +208,7 @@
             {{-- ROLE START --}}
             <li class="menu-item" style="">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i style="font-size: 18px;" class="fa-solid fa-note-sticky"></i> &nbsp; &nbsp;&nbsp;
+                <i style="font-size: 18px;" class="fa-solid fa-list-check"></i>&nbsp;&nbsp;
                 <div data-i18n="Layouts">Role Assign</div>
               </a>
         
@@ -299,16 +299,34 @@
             {{-- ROUTINE END  --}}
 
 
+
             
-            
-            {{-- ABOUT START --}}
+            {{-- ROUTINE START --}}
             <li class="menu-item">
-              <a href="{{ route('admin.about.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">About</div>
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i style="font-size: 18px;" class="fa-solid fa-address-card"></i> &nbsp;&nbsp;
+                <div data-i18n="Front Pages">About</div>
               </a>
+              <ul class="menu-sub">
+                  <li class="menu-item">
+                    <a href="{{ route('admin.about.index') }}" class="menu-link">
+                      <div data-i18n="Landing">About Content</div>
+                    </a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="{{ route('admin.about.galary') }}" class="menu-link">
+                      <div data-i18n="Pricing">About Galary</div>
+                    </a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="{{ route('admin.list.about.galary') }}" class="menu-link">
+                      <div data-i18n="Pricing">Galary List</div>
+                    </a>
+                  </li>
+              </ul>
             </li>
             {{-- ROUTINE END  --}}
+
 
 
 

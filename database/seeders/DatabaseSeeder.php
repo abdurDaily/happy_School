@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             ImageSeeder::class,
             VideoSeeder::class,
             RoleSeeser::class,
+            AboutgallerySeeder::class,
         ]);
     }
 }
