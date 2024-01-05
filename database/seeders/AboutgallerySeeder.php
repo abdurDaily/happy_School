@@ -15,6 +15,7 @@ class AboutgallerySeeder extends Seeder
     {
       $aboutGalleryData =  new Aboutgallery();
       $aboutGalleryData->about_galary_text = "this for testing purpose";
+      $aboutGalleryData->about_institute = "this for testing purpose";
       $aboutGalleryData->about_galary_img = asset('custom_img/about.png');
       $aboutGalleryData->save();
     }

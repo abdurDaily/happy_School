@@ -301,18 +301,14 @@
 
 
             
-            {{-- ROUTINE START --}}
+            {{-- ABOUT START --}}
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i style="font-size: 18px;" class="fa-solid fa-address-card"></i> &nbsp;&nbsp;
                 <div data-i18n="Front Pages">About</div>
               </a>
               <ul class="menu-sub">
-                  <li class="menu-item">
-                    <a href="{{ route('admin.about.index') }}" class="menu-link">
-                      <div data-i18n="Landing">About Content</div>
-                    </a>
-                  </li>
+                  
                   <li class="menu-item">
                     <a href="{{ route('admin.about.galary') }}" class="menu-link">
                       <div data-i18n="Pricing">About Galary</div>
@@ -325,7 +321,31 @@
                   </li>
               </ul>
             </li>
-            {{-- ROUTINE END  --}}
+            {{-- ABOUT END  --}}
+
+
+            
+            {{-- CATEGORY START --}}
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i style="font-size: 18px;" class="fa-solid fa-address-card"></i> &nbsp;&nbsp;
+                <div data-i18n="Front Pages">Category</div>
+              </a>
+              <ul class="menu-sub">
+                  
+                  <li class="menu-item">
+                    <a href="{{ route('admin.create.category') }}" class="menu-link">
+                      <div data-i18n="Pricing">Add Category</div>
+                    </a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="{{ route('admin.list.about.galary') }}" class="menu-link">
+                      <div data-i18n="Pricing">Galary List</div>
+                    </a>
+                  </li>
+              </ul>
+            </li>
+            {{-- CATEGORY END  --}}
 
 
 

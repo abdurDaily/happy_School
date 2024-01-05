@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AboutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -112,10 +113,13 @@ Route::middleware(['admin:admin'])->group(function (){
 
 /**__{--ABOUT START--}__ */
 Route::middleware(['admin:admin'])->group(function (){
-    Route::get('/about-index', [AboutController ::class, 'aboutIndex'])->name('about.index');
-    Route::get('/about-gallery', [AboutController ::class, 'aboutGallery'])->name('about.galary');
-    Route::post('/store-about-gallery', [AboutController ::class, 'storeUpdateAboutGallery'])->name('store.about.galary');
-    Route::get('/list-about-gallery', [AboutController ::class, 'listAboutGallery'])->name('list.about.galary');
+    
+    Route::get('/about-gallery', [AboutController::class, 'aboutGallery'])->name('about.galary');
+    Route::post('/store-about-gallery', [AboutController::class, 'storeUpdateAboutGallery'])->name('store.about.galary');
+    Route::get('/list-about-gallery', [AboutController::class, 'listAboutGallery'])->name('list.about.galary');
+    Route::get('/edit-about-gallery/{id}', [AboutController::class, 'editAboutGallery'])->name('edit.about.galary');
+    Route::put('/update-about-gallery/{id?}', [AboutController::class, 'storeUpdateAboutGallery'])->name('update.about.galary');
+    Route::get('/delete-about-gallery/{id}', [AboutController::class, 'deleteAboutGallery'])->name('delete.about.galary');
 });
 /**__{--ABOUT END --}__ */
 
@@ -152,3 +156,17 @@ Route::middleware(['admin:admin'])->group(function (){
     Route::post('/role-store', [RoleController ::class, 'roleStore'])->name('role.store');
 });
 /**__{--ROLE END--}__ */
+
+
+
+
+
+
+/**__{--CATEGORY START--}__ */
+Route::middleware(['admin:admin'])->group(function (){
+    Route::get('/category-create', [CategoryController ::class, 'createCategory'])->name('create.category');
+    Route::post('/category-store', [CategoryController ::class, 'categoryStoreOrUpdate'])->name('store.category');
+    Route::get('/sub-category-create', [CategoryController ::class, 'createSubCategory'])->name('create.subcategory');
+    Route::get('/test', [CategoryController ::class, 'test'])->name('create.test');
+});
+/**__{--CATEGORY END--}__ */

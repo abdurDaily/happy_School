@@ -9,11 +9,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class AboutController extends Controller
 {
-    /**__{--ABOUT_INDEX--}__ */
-    public function aboutIndex()
-    {
-        return view('admin.about.about');
-    }
+
 
 
     /**__{__ABOUT_GALARY__}__ */
@@ -25,7 +21,7 @@ class AboutController extends Controller
 
     /**__{__STORE AND UPDATEABOUT_GALARY__}__ */
 
-    public function storeUpdateAboutGallery(Request $request, $id=null)
+    public function storeUpdateAboutGallery(Request $request, $id = null)
     {
 
         $request->validate([
@@ -47,31 +43,39 @@ class AboutController extends Controller
 
 
 
-        $sboutGalleryData = aboutGallery::findOrNew($id);  
+        $sboutGalleryData = aboutGallery::findOrNew($id);
         $sboutGalleryData->about_galary_text = $request->about_galary_text ?? $sboutGalleryData->about_galary_text;
-            if ($request->hasFile('about_galary_img')) {
-                $sboutGalleryData->about_galary_img = env('APP_URL') . 'storage/' . $path ?? $sboutGalleryData->about_galary_img;
-            }
+        $sboutGalleryData->about_institute = $request->about_institute ??  $sboutGalleryData->about_institute = $request->about_institute ;
+        if ($request->hasFile('about_galary_img')) {
+            $sboutGalleryData->about_galary_img = env('APP_URL') . 'storage/' . $path;
+        }
         $sboutGalleryData->save();
         Alert::success('success!');
-        return back();
+        return redirect()->route('admin.list.about.galary');
     }
 
+    /**__{__EDIT_ABOUT_GALARY__}__ */
+    public function editAboutGallery($id)
+    {
+        $editData = aboutGallery::findOrFail($id);
+        return view('admin.about.editaboutgallery', compact('editData'));
+    }
+
+
     /**__{__LIST_ABOUT_GALARY__}__ */
-    public function listAboutGallery(){
+    public function listAboutGallery()
+    {
         $listData = Aboutgallery::latest()->get();
+        // dd($listData);
         return view('admin.about.listaboutgallery', compact('listData'));
     }
 
+    /**__{__DELETE_ABOUT_GALARY__}__ */
+    public function deleteAboutGallery($id)
+    {
+        Aboutgallery::findOrFail($id)->delete();
+        Alert::warning('Deleted!');
+        return redirect()->route('admin.list.about.galary');
 
-
-
-
-
-
-
-
-
-
-
+    }
 }
