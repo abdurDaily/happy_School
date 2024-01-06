@@ -338,11 +338,12 @@
                       <div data-i18n="Pricing">Add Category</div>
                     </a>
                   </li>
-                  <li class="menu-item">
+                  
+                  {{-- <li class="menu-item">
                     <a href="{{ route('admin.list.about.galary') }}" class="menu-link">
                       <div data-i18n="Pricing">Galary List</div>
                     </a>
-                  </li>
+                  </li> --}}
               </ul>
             </li>
             {{-- CATEGORY END  --}}

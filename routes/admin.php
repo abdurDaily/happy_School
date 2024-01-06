@@ -168,5 +168,7 @@ Route::middleware(['admin:admin'])->group(function (){
     Route::post('/category-store', [CategoryController ::class, 'categoryStoreOrUpdate'])->name('store.category');
     Route::get('/sub-category-create', [CategoryController ::class, 'createSubCategory'])->name('create.subcategory');
     Route::get('/test', [CategoryController ::class, 'test'])->name('create.test');
+    Route::get('/category-edit/{id}', [CategoryController ::class, 'createEdit'])->name('create.edit');
+    Route::put('/category-update', [CategoryController ::class, 'categoryStoreOrUpdate'])->name('update.category');
 });
 /**__{--CATEGORY END--}__ */

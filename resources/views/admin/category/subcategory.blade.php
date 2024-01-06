@@ -7,7 +7,6 @@
                     <div class="card-header">
                         <h4>Sub Category</h4>
                     </div>
-
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-6">
@@ -19,17 +18,13 @@
                                     @endforeach
                                 </select>
                             </div>
-
-
                             <div class="col-lg-6">
                                 <label for="select_category">Select Sub Category</label>
                                 <select name="sub_category" id="select_sub_category"
                                     class="form-control subcategory_select">
                                     <option value="" selected disabled>select a sub category</option>
-
                                 </select>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -52,11 +47,11 @@
                         responce.forEach(data => {
                             let option =
                                 `<option value="${data.id}">${data.title}</option>`
-                                optionsList.push(option)
-                            });
+                            optionsList.push(option)
+                        });
 
-                           $('#select_sub_category').html(optionsList)
-                        },
+                        $('#select_sub_category').html(optionsList)
+                    },
 
                 })
             })

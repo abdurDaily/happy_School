@@ -13,7 +13,6 @@ class CategoryController extends Controller
     public function createCategory()
     {
         $categoryData = Category::with('subCategory')->get();
-        // dd($data);
         return view('admin.category.addcategory', compact('categoryData'));
     }
 
@@ -22,7 +21,7 @@ class CategoryController extends Controller
     public function categoryStoreOrUpdate(Request $request, $id = null)
     {
         $request->validate([
-            'category' => 'required|max:30',
+            'category' => 'required|unique:categories,title',
         ]);
 
 
