@@ -154,6 +154,8 @@ Route::middleware(['admin:admin'])->group(function (){
 Route::middleware(['admin:admin'])->group(function (){
     Route::get('/role-create', [RoleController ::class, 'roleCreate'])->name('role.create');
     Route::post('/role-store', [RoleController ::class, 'roleStore'])->name('role.store');
+    Route::get('/role-edit/{id}', [RoleController ::class, 'roleEdit'])->name('role.edit');
+    Route::put('/role-update/{id}', [RoleController ::class, 'roleUpdate'])->name('role.update');
 });
 /**__{--ROLE END--}__ */
 

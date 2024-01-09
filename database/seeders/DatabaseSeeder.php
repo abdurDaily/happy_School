@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
             ImageSeeder::class,
             VideoSeeder::class,
             RoleSeeser::class,
+            PermissionSeeder::class,
+            AssignRolePermissionSeeder::class,
             AboutgallerySeeder::class,
             CategorySeeder::class,
         ]);
