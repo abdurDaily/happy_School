@@ -42,9 +42,11 @@ class RoleController extends Controller
 
     //* PERMISSION 
     public function permission($id) {
-        $roleData = Role::findOrFail($id);
+        $roleData = Role::with('permissions')->findOrFail($id);
         $permissions = Permission::get();
-        return view('admin.role.permission', compact('roleData','permissions'));
+        $hasPermissions = $roleData->permissions->pluck('id');
+        
+        return view('admin.role.permission', compact('roleData','permissions','hasPermissions'));
     }
 
 
@@ -63,7 +65,7 @@ class RoleController extends Controller
 
     //* ROLE LIST 
     public function roleList(){
-        $allRoles = Role::get();
+        $allRoles =  Role::where('name', '!=', 'admin')->get();
         return view('admin.role.listRole',compact('allRoles'));
     }
 

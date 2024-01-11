@@ -16,9 +16,12 @@
                                     <div class="row">
                                         @forelse ($permissions as $permission)
                                             <div class="col-md-3">
+
+                                                
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" name="permission_id[]"
-                                                        value="{{ $permission->id }}" id="flexCheck_{{ $permission->id }}">
+                                                    {{ in_array($permission->id,$hasPermissions->toArray()) ? 'checked' : '' }}
+                                                    value="{{ $permission->id }}" id="flexCheck_{{ $permission->id }}">
                                                     <label class="form-check-label" for="flexCheck_{{ $permission->id }}">
                                                         {{ $permission->name }}
                                                     </label>
