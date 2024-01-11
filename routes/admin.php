@@ -153,9 +153,12 @@ Route::middleware(['admin:admin'])->group(function (){
 /**__{--ROLE START--}__ */
 Route::middleware(['admin:admin'])->group(function (){
     Route::get('/role-create', [RoleController ::class, 'roleCreate'])->name('role.create');
-    Route::post('/role-store', [RoleController ::class, 'roleStore'])->name('role.store');
+    Route::get('/role-list', [RoleController ::class, 'roleList'])->name('role.list');
     Route::get('/role-edit/{id}', [RoleController ::class, 'roleEdit'])->name('role.edit');
-    Route::put('/role-update/{id}', [RoleController ::class, 'roleUpdate'])->name('role.update');
+    Route::post('/role-store', [RoleController ::class, 'roleStore'])->name('role.store');
+    Route::get('/permission/{id}', [RoleController ::class, 'permission'])->name('role.permission');
+    Route::put('/permission-assign/{id}', [RoleController ::class, 'permissionAssign'])->name('permission.assign');
+    Route::post('/permission-test/{id}', [RoleController ::class, 'permissionTest'])->name('permission.test');
 });
 /**__{--ROLE END--}__ */
 

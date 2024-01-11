@@ -3,9 +3,13 @@
     <section id="role">
         <div class="container">
             <div class="card p-3">
+                <div class="head-btn d-flex justify-content-start mb-3">
+                    <a href="{{ route('admin.role.list') }}" class="btn btn-primary btn-sm py-2 px-4">Edit Role</a>
+                </div>
                 <div class="row px-2">
 
-                    <div class="col-lg-4 order-md-2 order-sm-1">
+                    <div class="col-lg-4 order-md-2 order-sm-1 ">
+                        
                         <div class="card shadow">
                             <div class="card-header bg-primary">
                                 <h5 style="color: #fff; margin:0;">Inser a New Role</h5>
@@ -26,9 +30,9 @@
                     </div>
 
 
-                    <div class="col-lg-8 order-md-1 order-sm-2">
-                        <div class="card-body">
-                            <table class="shadow table table-hover table-striped table-light ">
+                    <div class="col-lg-8 order-md-1 order-sm-2 ">
+                        <div class="card-body" style="padding: 0;">
+                            <table class="shadow table table-hover table-striped table-light tab-navigation">
                                 <tr>
                                     <th>Sn</th>
                                     <th>Name</th>
@@ -41,10 +45,8 @@
                                         <td>{{ $data->name }}</td>
                                         <td>
                                             <div class="btn-group">
-                                                    <button data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $data->id }}" class="btn btn-sm btn-primary">Edit</button>
-                                                <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="{{ route('admin.role.permission',$data->id) }}" class="btn btn-primary btn-sm">Permission</a>
                                             </div>
-                                            @include('admin.role.role_edit_modal')
                                         </td>
                                     </tr>
                                 @empty
@@ -54,30 +56,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-
-
-
-
-
-
-            
+            </div>   
         </div>
     </section>
 
-
-
-
-
-
-    @push('additional_js')
-        <script>
-            let roleEditBtn = $('.role-edit-btn');
-            roleEditBtn.on('click', function(){
-                alert('ok');
-            })
-        </script>
-    @endpush
 @endsection

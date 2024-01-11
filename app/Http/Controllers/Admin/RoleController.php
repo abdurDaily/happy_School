@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
@@ -14,6 +15,13 @@ class RoleController extends Controller
         $allRoles = Role::where('name', '!=', 'admin')->get();
         $permissions = Permission::select('id', 'name')->get();
         return view('admin.role.addRole', compact('allRoles','permissions'));
+    }
+
+
+    public function roleEdit($id){
+        $allRoles = Role::get();
+        $data = Role::find($id);
+        return view('admin.role.editRole',compact('allRoles','data'));
     }
 
 
@@ -32,21 +40,45 @@ class RoleController extends Controller
 
 
 
-    //* ROLE EDIT
-    public function roleEdit($id) {
+    //* PERMISSION 
+    public function permission($id) {
         $roleData = Role::findOrFail($id);
-        dd($roleData);
+        $permissions = Permission::get();
+        return view('admin.role.permission', compact('roleData','permissions'));
     }
 
 
     // * ROLE UPDATE 
-    public function roleUpdate(Request $request, $id){
-        
-        // dd($request->permission_id);
+    public function permissionAssign(Request $request, $id){
+
         $role = Role::find($id);
         $role->name = $request->name;
+        // $permissionIds = array_map('intval', $request->permission_id);
+        // $role->syncPermissions($permissionIds);
+        $role->save();
+        Alert::success('updated!');
+        return redirect()->route('admin.role.list');
+    }
+
+
+    //* ROLE LIST 
+    public function roleList(){
+        $allRoles = Role::get();
+        return view('admin.role.listRole',compact('allRoles'));
+    }
+
+
+
+
+
+    //* PERMISSION TEST
+    public function permissionTest(Request $request, $id){
+        $role = Role::find($id);
         $permissionIds = array_map('intval', $request->permission_id);
         $role->syncPermissions($permissionIds);
         $role->save();
+        Alert::success('success!', 'permission inserted!');
+        return redirect()->route('admin.role.create');
+    //   dd($request->all());
     }
 }

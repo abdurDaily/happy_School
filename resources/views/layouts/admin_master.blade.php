@@ -220,8 +220,8 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="{{ route('admin.notice.show') }}" class="menu-link">
-                    <div data-i18n="Without menu">notice list</div>
+                  <a href="{{ route('admin.role.list') }}" class="menu-link">
+                    <div data-i18n="Without menu">Role List</div>
                   </a>
                 </li>
               </ul>
