@@ -157,6 +157,33 @@
               </a>
             </li>
 
+            {{-- ROLE START --}}
+            <li class="menu-item" style="">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i style="font-size: 18px;" class="fa-solid fa-list-check"></i>&nbsp;&nbsp;
+                <div data-i18n="Layouts">Role Assign</div>
+              </a>
+
+              <ul class="menu-sub">
+
+                <li class="menu-item">
+                  <a href="{{ route('admin.role.create') }}" class="menu-link">
+                    <div data-i18n="Without menu">add role</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{ route('admin.role.list') }}" class="menu-link">
+                    <div data-i18n="Without menu">Role List</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            {{-- ROLE START --}}
+
+            
+            {{-- @canany('Administrator|Teacher', 'admin') --}}
+
+
             {{-- EMPLOYEE START --}}
             <li class="menu-item" style="">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -205,28 +232,7 @@
             {{-- NOTICE START --}}
 
 
-            {{-- ROLE START --}}
-            <li class="menu-item" style="">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i style="font-size: 18px;" class="fa-solid fa-list-check"></i>&nbsp;&nbsp;
-                <div data-i18n="Layouts">Role Assign</div>
-              </a>
-        
-              <ul class="menu-sub">
-        
-                <li class="menu-item">
-                  <a href="{{ route('admin.role.create') }}" class="menu-link">
-                    <div data-i18n="Without menu">add role</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="{{ route('admin.role.list') }}" class="menu-link">
-                    <div data-i18n="Without menu">Role List</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            {{-- ROLE START --}}
+            
 
 
             {{-- NEWS AND EVENT  START --}}
@@ -374,6 +380,7 @@
 
             
 
+             {{-- @endcanany --}}
 
             </ul>
         </aside>

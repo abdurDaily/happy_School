@@ -16,8 +16,12 @@ class AdminSeeder extends Seeder
     {
         $admin = new Admin();
         $admin->name = "Admin";
-        $admin->email = "admin@gmail.com";
-        $admin->password = Hash::make('123456789');
+        $admin->email = "abdur@gmail.com";
+        $admin->password = Hash::make('password');
+        $admin->employee_designation = "pera😢";
+        $admin->employee_phone = "0123456789";
+        $admin->employee_about = "ki r bolbo? obstha kharap!";
+        $admin->employee_image = asset('custom_img/img_placeholder.jpg');
         $admin->save();
     }
 }

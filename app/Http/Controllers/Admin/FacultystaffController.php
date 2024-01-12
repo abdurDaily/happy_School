@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Admin\Facultystaff;
+// use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Admin;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -17,14 +21,15 @@ class FacultystaffController extends Controller
     //EMPLOYEE CREATE
     public function createEmployee()
     {
-        return view('admin.employee.addEmployee');
+        $allRoles = Role::select('id', 'name')->get();
+        return view('admin.employee.addEmployee', compact('allRoles'));
     }
 
 
     // ALL EMPLOYEE'S SHOW HERE !!
     public function showEmployee()
     {
-        $allEmployee = Facultystaff::latest()->simplePaginate(3);
+        $allEmployee = Admin::latest()->simplePaginate(3);
         return view('admin.employee.listEmployee', compact('allEmployee'));
     }
 
@@ -32,7 +37,7 @@ class FacultystaffController extends Controller
     // EDIT EMPLOYEE 
     public function editEmployee($id)
     {
-        $editData = Facultystaff::findOrFail($id);
+        $editData = Admin::findOrFail($id);
         return view('admin.employee.editEmployee', compact('editData'));
     }
 
@@ -40,7 +45,7 @@ class FacultystaffController extends Controller
     // DELETE EMPLOYEE ! 
     public function deleteEmployee($id)
     {
-        Facultystaff::findOrFail($id)->delete();
+        Admin::findOrFail($id)->delete();
         toast('delete employee!');
         return redirect()->route('admin.employee.show');
     }
@@ -49,49 +54,53 @@ class FacultystaffController extends Controller
     // STORE AND UPDATE EMPLOYEE DATA
     function storeAndUpdate(Request $request, $id = null)
     {
-       
+        // dd($request->all());
+        
         $request->validate([
-            'employee_name' => 'required',
+            'name' => 'required',
+            'email' => "required|email|unique:admins,email,". $id,
             'employee_designation' => 'required',
             'employee_phone' => 'required',
-            'employee_email' => 'required',
-            'employee_join_date' => 'required',
             'employee_about' => 'required',
-        ]);
+            ]);
 
-        if ($request->routeIs('admin.employee.store')) {
-            $request->validate([
+            
+            if ($request->routeIs('admin.employee.store')) {
+                $request->validate([
+                'password' => "required|min:8",
                 'employee_image' => 'required|mimes:png,jpg,jpeg',
             ]);
         }
 
-
-        $employeeData =  Facultystaff::findOrNew($id);
+        $employeeData =  Admin::findOrNew($id);
         if ($request->hasFile('employee_image')) {
             $extension = $request->employee_image->extension();
             $uniqName = $request->employee_name . "-" . uniqid() . "." . $extension;
             $path = $request->employee_image->storeAs('employee', $uniqName, 'public');
         }
-            $employeeData->employee_name = $request->employee_name;
-            $employeeData->employee_designation = $request->employee_designation ?? $employeeData->employee_designation;
-            $employeeData->employee_phone = $request->employee_phone ?? $employeeData->employee_phone;
-            $employeeData->employee_email = $request->employee_email ?? $employeeData->employee_email;
-            $employeeData->employee_join_date = $request->employee_join_date ?? $employeeData->employee_join_date;
-            $employeeData->employee_about = $request->employee_about ?? $employeeData->employee_about;
-            if ($request->hasFile('employee_image')) {
-                $employeeData->employee_image = env('APP_URL') . 'storage/' .  $path;
-            }
-            $employeeData->save();
-            Alert::success('Succcess');
-            return redirect()->route('admin.employee.show');
+        $employeeData->name = $request->name;
+        $employeeData->email = $request->email ?? $employeeData->email;
+        $employeeData->password = Hash::make($request->password) ?? Hash::make($request->password);
+        $employeeData->employee_designation = $request->employee_designation ?? $employeeData->employee_designation;
+        $employeeData->employee_phone = $request->employee_phone ?? $employeeData->employee_phone;
+        $employeeData->employee_about = $request->employee_about ?? $employeeData->employee_about;
+        if ($request->hasFile('employee_image')) {
+            $employeeData->employee_image = env('APP_URL') . 'storage/' .  $path;
+        }
+
+        if ($employeeData->save()) {
+            $employeeData->syncRoles($request->employee_role);
+        }
+        Alert::success('Succcess');
+        return redirect()->route('admin.employee.show');
     }
 
 
     // SEARCH EMPLOYEE 
-    public function searchEmployee(Request $request){
+    public function searchEmployee(Request $request)
+    {
         $search = $request->search_employee;
-        $employees = Facultystaff::query()->where('employee_name', 'LIKE', "%{$search}%")->get();
-        return view('admin.employee.searchEmployee',compact('employees'));
-        
+        $allEmployee = Admin::query()->where('name', 'LIKE', "%{$search}%")->get();
+        return view('admin.employee.searchEmployee', compact('allEmployee'));
     }
 }

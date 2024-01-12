@@ -75,7 +75,7 @@
 
                                 <a class="my-custom-links" data-vbtype="iframe"
                                     href="{{ str_replace('watch?v=', 'embed/', $data->video_link) }}">
-                                    <img class="img-fluid rounded thumbnail_img"
+                                    <img  class="img-fluid rounded thumbnail_img"
                                         src="{{ 'http://img.youtube.com/vi/' . $video_id . '/maxresdefault.jpg' }}"
                                         alt="">
                                 </a>

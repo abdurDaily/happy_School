@@ -14,11 +14,10 @@
                             <tr>
                                 <th>Sn</th>
                                 <th>Name</th>
-                                <th>Designation</th>
-                                <th>image</th>
-                                <th>phone</th>
                                 <th>email</th>
-                                <th>joing date</th>
+                                <th>image</th>
+                                <th>Designation</th>
+                                <th>phone</th>
                                 <th>about</th>
                                 <th>status</th>
                             </tr>
@@ -26,15 +25,15 @@
                             @forelse ($allEmployee as $key => $data)
                                 <tr>
                                     <td>{{ ++$key }}</td>
-                                    <td>{{ $data->employee_name }}</td>
-                                    <td>{{ $data->employee_designation }}</td>
+                                    <td>{{ $data->name }}</td>
+                                    <td>{{ $data->email }}</td>
                                     <td>
-                                        <img style="width: 100px; height:100px; object-fit:cover;" src="{{ $data->employee_image }}" alt="">
+                                        <img style="width: 80px; border-radius: 50%; height:80px; object-fit:cover;" src="{{ $data->employee_image }}" alt="">
                                     </td>
+                                    <td>{{ $data->employee_designation }}</td>
                                     <td>{{ $data->employee_phone }}</td>
-                                    <td>{{ $data->employee_email }}</td>
-                                    <td>{{ $data->employee_join_date }}</td>
                                     <td>{{ $data->employee_about }}</td>
+                                    
                                     <td>
                                         <div class="btn-group">
                                             <a href="{{ route('admin.employee.edit', $data->id) }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
