@@ -64,6 +64,20 @@
                                                 </div>
 
 
+                                                <div class="col-lg-6">
+                                                    <label for="employee_role">Role Assign</label>
+                                                    
+                                                    <select name="employee_role" id="employee_role" class="form-control">
+                                                      <option value="" selected disabled>Select a role</option>
+                                                      <option value="0">Decline Role</option>
+
+                                                      {{-- {{ auth('admin') }} --}}
+                                                      @foreach ($allRoles as $role)
+                                                          <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                                      @endforeach
+                                                    </select>
+                                              </div>
+
                                                 
 
                                                 

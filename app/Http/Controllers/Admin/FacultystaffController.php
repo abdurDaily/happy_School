@@ -38,7 +38,9 @@ class FacultystaffController extends Controller
     public function editEmployee($id)
     {
         $editData = Admin::findOrFail($id);
-        return view('admin.employee.editEmployee', compact('editData'));
+        $allRoles = Role::select('id', 'name')->get();
+        // dd($allRoles);
+        return view('admin.employee.editEmployee', compact('editData','allRoles'));
     }
 
 
@@ -84,13 +86,16 @@ class FacultystaffController extends Controller
         $employeeData->employee_designation = $request->employee_designation ?? $employeeData->employee_designation;
         $employeeData->employee_phone = $request->employee_phone ?? $employeeData->employee_phone;
         $employeeData->employee_about = $request->employee_about ?? $employeeData->employee_about;
+        
         if ($request->hasFile('employee_image')) {
             $employeeData->employee_image = env('APP_URL') . 'storage/' .  $path;
         }
-
-        if ($employeeData->save()) {
+        
+        if($employeeData->save()){
             $employeeData->syncRoles($request->employee_role);
+
         }
+        // $employeeData->save();
         Alert::success('Succcess');
         return redirect()->route('admin.employee.show');
     }

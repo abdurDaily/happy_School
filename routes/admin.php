@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Backend\EnrollmentController;
 use App\Http\Controllers\Backend\ResultController;
 use App\Models\Admin\Routine;
+use Illuminate\Validation\Rules\Can;
 
 //Guest Route Group
 Route::middleware(['guest'])->group(function () {
@@ -45,7 +46,7 @@ Route::middleware(['admin:admin'])->group(function () {
 
 
 //FACULTY AND STAFF START 
-Route::middleware(['admin:admin'])->group(function () {
+Route::middleware(['admin:admin',])->group(function () {
     Route::get('/create-employee', [FacultystaffController::class, 'createEmployee'])->name('employee.create');
     Route::post('/store-employee', [FacultystaffController::class, 'storeAndUpdate'])->name('employee.store');
     Route::get('/show-all-employee', [FacultystaffController::class, 'showEmployee'])->name('employee.show');

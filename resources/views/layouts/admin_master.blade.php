@@ -157,6 +157,8 @@
               </a>
             </li>
 
+          
+            @if (auth('admin')->user()->can(['Administrator', 'Teacher', 'Student', 'Finance', 'HRM', 'Staff']))
             {{-- ROLE START --}}
             <li class="menu-item" style="">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -181,18 +183,15 @@
             {{-- ROLE START --}}
 
             
-            {{-- @canany('Administrator|Teacher', 'admin') --}}
-
-
             {{-- EMPLOYEE START --}}
             <li class="menu-item" style="">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="fa-solid fa-people-group"></i> &nbsp; &nbsp;&nbsp;
                 <div data-i18n="Layouts">Employee</div>
               </a>
-        
+
               <ul class="menu-sub">
-        
+
                 <li class="menu-item">
                   <a href="{{ route('admin.employee.create') }}" class="menu-link">
                     <div data-i18n="Without menu">add employee</div>
@@ -206,9 +205,14 @@
               </ul>
             </li>
             {{-- EMPLOYEE START --}}
+            @endif
+      
 
 
-            {{-- NOTICE START --}}
+           
+
+
+           {{-- NOTICE START --}}
             <li class="menu-item" style="">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i style="font-size: 18px;" class="fa-solid fa-note-sticky"></i> &nbsp; &nbsp;&nbsp;
@@ -230,9 +234,6 @@
               </ul>
             </li>
             {{-- NOTICE START --}}
-
-
-            
 
 
             {{-- NEWS AND EVENT  START --}}
@@ -330,57 +331,56 @@
             {{-- ABOUT END  --}}
 
 
+                        {{-- CATEGORY START --}}
+                        <li class="menu-item">
+                          <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i style="font-size: 18px;" class="fa-solid fa-address-card"></i> &nbsp;&nbsp;
+                            <div data-i18n="Front Pages">Category</div>
+                          </a>
+                          <ul class="menu-sub">
+                              
+                              <li class="menu-item">
+                                <a href="{{ route('admin.create.category') }}" class="menu-link">
+                                  <div data-i18n="Pricing">Add Category</div>
+                                </a>
+                              </li>
+                              
+                              {{-- <li class="menu-item">
+                                <a href="{{ route('admin.list.about.galary') }}" class="menu-link">
+                                  <div data-i18n="Pricing">Galary List</div>
+                                </a>
+                              </li> --}}
+                          </ul>
+                        </li>
+                        {{-- CATEGORY END  --}}
             
-            {{-- CATEGORY START --}}
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i style="font-size: 18px;" class="fa-solid fa-address-card"></i> &nbsp;&nbsp;
-                <div data-i18n="Front Pages">Category</div>
-              </a>
-              <ul class="menu-sub">
-                  
-                  <li class="menu-item">
-                    <a href="{{ route('admin.create.category') }}" class="menu-link">
-                      <div data-i18n="Pricing">Add Category</div>
-                    </a>
-                  </li>
-                  
-                  {{-- <li class="menu-item">
-                    <a href="{{ route('admin.list.about.galary') }}" class="menu-link">
-                      <div data-i18n="Pricing">Galary List</div>
-                    </a>
-                  </li> --}}
-              </ul>
-            </li>
-            {{-- CATEGORY END  --}}
-
-
-
-
-            {{-- IMAGE START --}}
-            <li class="menu-item">
-              <a href="{{ route('admin.image.index') }}" class="menu-link">
-                <i style="font-size: 18px" class="fa-regular fa-image"></i> &nbsp; &nbsp;
-                <div data-i18n="Basic">Image Upload</div>
-              </a>
-            </li>
-            {{-- IMAGE END  --}}
-
-
-
-            {{-- VIDEO START --}}
-            <li class="menu-item">
-              <a href="{{ route('admin.video.index') }}" class="menu-link">
-                <i style="font-size: 18px" class="fa-brands fa-youtube"></i>  &nbsp; &nbsp;
-                <div data-i18n="Basic">Video Link</div>
-              </a>
-            </li>
-            {{-- VIDEO END  --}}
+            
+            
+            
+                        {{-- IMAGE START --}}
+                        <li class="menu-item">
+                          <a href="{{ route('admin.image.index') }}" class="menu-link">
+                            <i style="font-size: 18px" class="fa-regular fa-image"></i> &nbsp; &nbsp;
+                            <div data-i18n="Basic">Image Upload</div>
+                          </a>
+                        </li>
+                        {{-- IMAGE END  --}}
+            
+            
+            
+                        {{-- VIDEO START --}}
+                        <li class="menu-item">
+                          <a href="{{ route('admin.video.index') }}" class="menu-link">
+                            <i style="font-size: 18px" class="fa-brands fa-youtube"></i>  &nbsp; &nbsp;
+                            <div data-i18n="Basic">Video Link</div>
+                          </a>
+                        </li>
+                        {{-- VIDEO END  --}}
 
 
             
 
-             {{-- @endcanany --}}
+
 
             </ul>
         </aside>
