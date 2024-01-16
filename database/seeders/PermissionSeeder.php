@@ -20,6 +20,7 @@ class PermissionSeeder extends Seeder
             'Finance',
             'HRM',
             'Staff',
+            'hide_permisson'
         ];
 
         foreach($permissions as $permission){

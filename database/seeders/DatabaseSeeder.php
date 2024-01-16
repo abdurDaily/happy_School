@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             AssignRolePermissionSeeder::class,
             AboutgallerySeeder::class,
             CategorySeeder::class,
+            AdmissionSeeder::class,  //*FrontEnd 
         ]);
     }
 }

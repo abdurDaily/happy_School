@@ -39,7 +39,6 @@ class FacultystaffController extends Controller
     {
         $editData = Admin::findOrFail($id);
         $allRoles = Role::select('id', 'name')->get();
-        // dd($allRoles);
         return view('admin.employee.editEmployee', compact('editData','allRoles'));
     }
 
@@ -56,8 +55,7 @@ class FacultystaffController extends Controller
     // STORE AND UPDATE EMPLOYEE DATA
     function storeAndUpdate(Request $request, $id = null)
     {
-        // dd($request->all());
-        
+
         $request->validate([
             'name' => 'required',
             'email' => "required|email|unique:admins,email,". $id,
@@ -78,6 +76,7 @@ class FacultystaffController extends Controller
         if ($request->hasFile('employee_image')) {
             $extension = $request->employee_image->extension();
             $uniqName = $request->employee_name . "-" . uniqid() . "." . $extension;
+
             $path = $request->employee_image->storeAs('employee', $uniqName, 'public');
         }
         $employeeData->name = $request->name;

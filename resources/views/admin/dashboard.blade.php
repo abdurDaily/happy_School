@@ -1,282 +1,300 @@
 @extends('layouts.admin_master')
 @section('page_title', 'Admin - Dashboard')
 @section('admin_main_content')
-    <section id="dasboard">
-        <div class="container">
 
-            <main id="main" class="main">
-                <div class="pagetitle">
-                    <h1>Dashboard</h1>
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-                    </nav>
-                </div><!-- End Page Title -->
 
-                <section class="section dashboard">
-                    <div class="row">
 
-                        <!-- Left side columns -->
-                        <div class="col-lg-8">
-                            <div class="row">
 
-                                <!-- Sales Card -->
-                                <div class="col-xxl-4 col-md-6 mb-3 mb-lg-0">
-                                    <div class="card info-card sales-card">
 
-                                        <div class="filter">
-                                            <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                                    class="bi bi-three-dots"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <li class="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li>
 
-                                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                                            </ul>
-                                        </div>
 
-                                        <div class="card-body ">
-                                            <h5 class="card-title">Sales <span>| Today</span></h5>
 
-                                            <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-cart"></i>
-                                                </div>
-                                                <div class="ps-3">
-                                                    <h6>145</h6>
-                                                    <span class="text-success small pt-1 fw-bold">12%</span> <span
-                                                        class="text-muted small pt-2 ps-1">increase</span>
 
-                                                </div>
-                                            </div>
-                                        </div>
 
+    <div class="container-xxl flex-grow-1 container-p-y">
+
+        <div class="row">
+            <div class="col-lg-8 mb-4 order-0">
+                <div class="card">
+                    <div class="d-flex align-items-end row">
+                        <div class="col-sm-7">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary"> <span style="color:rgb(5, 26, 26);">Welcome</span>
+                                    {{ Auth::guard('admin')->user()->name }} 🎉</h5>
+                                <p class="mb-4">{{ Auth::guard('admin')->user()->employee_about }}</p>
+
+                                <a href="" class="btn btn-sm btn-outline-primary">View Website</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-5 text-center text-sm-left">
+                            <div class="card-body pb-0 px-0 px-md-4">
+                                <img style="padding: 0 0 20px 0;" src="{{ Auth::guard('admin')->user()->employee_image }}"
+                                    height="140" alt="View Badge User"
+                                    data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                                    data-app-light-img="illustrations/man-with-laptop-light.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 order-1">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <div class="avatar flex-shrink-0">
+                                        <span style="font-size:25px;"><i class="fa-solid fa-graduation-cap"></i></span>
                                     </div>
-                                </div><!-- End Sales Card -->
-
-                                <!-- Revenue Card -->
-                                <div class="col-xxl-4 col-md-6 mb-3 mb-lg-0">
-                                    <div class="card info-card revenue-card">
-
-                                        <div class="filter">
-                                            <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                                    class="bi bi-three-dots"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <li class="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li>
-
-                                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="card-body">
-                                            <h5 class="card-title">Revenue <span>| This Month</span></h5>
-
-                                            <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-currency-dollar"></i>
-                                                </div>
-                                                <div class="ps-3">
-                                                    <h6>$3,264</h6>
-                                                    <span class="text-success small pt-1 fw-bold">8%</span> <span
-                                                        class="text-muted small pt-2 ps-1">increase</span>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div><!-- End Revenue Card -->
-
-                                <!-- Customers Card -->
-                                <div class="col-xxl-4 col-xl-12">
-
-                                    <div class="card info-card customers-card">
-
-                                        <div class="filter">
-                                            <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                                    class="bi bi-three-dots"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <li class="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li>
-
-                                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="card-body">
-                                            <h5 class="card-title">Customers <span>| This Year</span></h5>
-
-                                            <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-people"></i>
-                                                </div>
-                                                <div class="ps-3">
-                                                    <h6>1244</h6>
-                                                    <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                                                        class="text-muted small pt-2 ps-1">decrease</span>
-
-                                                </div>
-                                            </div>
-
+                                    <div class="dropdown">
+                                        <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                                         </div>
                                     </div>
+                                </div>
+                                <span class="fw-medium d-block mb-1">Total Student's</span>
+                                <h3 class="card-title mb-2" style="color: rgb(11, 253, 47);">12,68</h3>
+                                {{-- <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +72.80%</small> --}}
+                            </div>
+                        </div>
+                    </div>
 
-                                </div><!-- End Customers Card -->
-
-                                <!-- Reports -->
-                                <div class="col-12 mt-5">
-                                    <div class="card">
-
-                                        <div class="filter">
-                                            <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                                    class="bi bi-three-dots"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <li class="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li>
-
-                                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                                            </ul>
-                                        </div>
-
-
-                                        <div class="card-body">
-                                            <h5 class="card-title">Reports <span>/Today</span></h5>
-
-
-
-                                        </div>
-
+                    <div class="col-lg-6 col-md-12 col-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <div class="avatar flex-shrink-0">
+                                        <span style="font-size:25px;"><i class="fa-solid fa-graduation-cap"></i></span>
                                     </div>
-                                </div><!-- End Reports -->
-
-                                <!-- Recent Sales -->
-                                <div class="col-12">
-                                    <div class="card recent-sales overflow-auto">
-
-
-
-
-
-                                    </div>
-                                </div><!-- End Recent Sales -->
-
-                                <!-- Top Selling -->
-                                <div class="col-12">
-                                    <div class="card top-selling overflow-auto mt-5">
-
-                                        <div class="filter">
-                                            <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                                    class="bi bi-three-dots"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <li class="dropdown-header text-start">
-                                                    <h6>Filter</h6>
-                                                </li>
-
-                                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                                            </ul>
+                                    <div class="dropdown">
+                                        <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                                         </div>
-
-                                        <div class="card-body pb-0">
-                                            <h5 class="card-title">Top Selling <span>| Today</span></h5>
-
-
-
-                                        </div>
-
                                     </div>
-                                </div><!-- End Top Selling -->
+                                </div>
+                                <span class="fw-medium d-block mb-1">Total Student's</span>
+                                <h3 class="card-title mb-2" style="color: rgb(11, 253, 47);">12,68</h3>
+                                {{-- <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +72.80%</small> --}}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="row">
+            <!-- NOTICE START-->
+            <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
+                <div class="card h-100">
+                    <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                        <div class="card-title mb-0">
+                            <h5 class="m-0 me-2">Latest Notice's</h5>
+                            <small class="text-muted">42.82k Total Sales</small>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn p-0" type="button" id="orederStatistics" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="bx bx-dots-vertical-rounded"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
+                                {{-- <a class="dropdown-item" href="javascript:void(0);">Select All</a> --}}
+                                <a class="dropdown-item" href="{{ route('admin.notice.create') }}">Add Notice</a>
+                                <a class="dropdown-item" href="{{ route('admin.notice.show') }}">All Notice</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3" style="position: relative;">
+                            <table class="table table-hover table-striped mt-3">
+                                <tr>
+                                    <td>SN.</td>
+                                    <td>Title</td>
+                                    <td align="right">PDF</td>
+                                </tr>
+
+                                @forelse ($notice as $key=>$noticeData)
+                                    <tr>
+                                        <td>{{ ++$key }}</td>
+                                        <td>{{ Str::limit($noticeData->notice_title, 10, '...') }}</td>
+                                        <td align="right">
+                                            <a target="_blank" href="{{ $noticeData->notice_image }}">Download</a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                @endforelse
+                            </table>
+
+                        </div>
+                        <div class="notice-paginate card shadow ">
+                           <span> {{ $notice->links() }}</span>
+
+                           @push('additional_css')
+                               <style>
+                                .pagination{
+                                    margin: 0;
+                                    padding: 5px
+                                }
+                               </style>
+                           @endpush
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/ NOTICE END -->
+
+            <!-- ROUTINE START -->
+            <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
+                <div class="card h-100">
+                    <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                        <div class="card-title mb-0">
+                            <h5 class="m-0 me-2">Latest Routine's</h5>
+                            <small class="text-muted">42.82k Total Sales</small>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn p-0" type="button" id="orederStatistics" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="bx bx-dots-vertical-rounded"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
+                                <a class="dropdown-item" href="{{ route('admin.routine.create') }}">Create Routine</a>
+                                <a class="dropdown-item" href="{{ route('admin.routine.list') }}">Routine List</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3" style="position: relative;">
+                            <table class="table table-hover table-striped mt-3">
+                                <tr>
+                                    <td>SN.</td>
+                                    <td>Title</td>
+                                    <td align="right">PDF</td>
+                                </tr>
+
+                                @forelse ($routine as $key=>$routineData)
+                                    <tr>
+                                        <td>{{ ++$key }}</td>
+                                        <td>{{ Str::limit($routineData->routine_title, 10, '...') }}</td>
+                                        <td align="right">
+                                            <a target="_blank" href="{{ $routineData->routine_image }}">Download</a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                @endforelse
+                            </table>
+
+                        </div>
+                        <div class="notice-paginate card shadow ">
+                           <span> {{ $routine->links() }}</span>
+
+                           @push('additional_css')
+                               <style>
+                                .pagination{
+                                    margin: 0;
+                                    padding: 5px
+                                }
+                               </style>
+                           @endpush
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/ ROUTINE END -->
+
+            <!-- Transactions -->
+            <div class="col-md-6 col-lg-4 order-2 mb-4">
+                <div class="card h-100">
+
+                    <div class="card-body pb-0">
+
+
+                        <div class="event-count d-flex justify-content-between align-items-center pb-3">
+                            <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
+                            <button type="button" class="btn btn-primary position-relative">
+                                events
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    {{ $eventCount }}
+                                    <span class="visually-hidden">unread messages</span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <div class="news pb-3">
+
+                            @forelse ($newEvent as $eventData)
+                                <div class="post-item clearfix ">
+                                    <div class="row pb-3">
+                                        <div class="col-4 py-0">
+                                            <img class="img-fluid" src="{{ $eventData->event_img }}" alt="">
+                                        </div>
+                                        <div class="col-8 p-0">
+                                            <h5><a
+                                                    href="{{ route('admin.event.edit', $eventData->id) }}">{{ Str::limit($eventData->event_title, 100, '...') }}</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            @empty
+                                <h6>No Resent Event Found!</h6>
+                            @endforelse
+
+
+                            <div class="event-btn d-flex justify-content-between">
+                                <a href="{{ route('admin.event.create') }}" style="width: 48%;"
+                                    class="btn btn-primary ">Add Event
+                                </a>
+                                <a href="{{ route('admin.event.list') }}" style="width: 48%;"
+                                    class="btn btn-primary ">All Event's
+                                    List</a>
+
 
                             </div>
-                        </div><!-- End Left side columns -->
-
-                        <!-- Right side columns -->
-                        <div class="col-lg-4">
-
-                            <!-- Recent Activity -->
-                            <div class="card">
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                            class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-
-                                        <li><a class="dropdown-item" href="#">Today</a></li>
-                                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                                    </ul>
-                                </div>
-
-                               
-                            </div><!-- End Recent Activity -->
 
 
-                            <!-- News & Updates Traffic -->
-                            <div class="card">
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                            class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-
-                                        <li><a class="dropdown-item" href="#">Today</a></li>
-                                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="card-body pb-0">
-                                    <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
-
-                                    <div class="news">
-                                        <div class="post-item clearfix">
-                                            <img src="assets/img/news-1.jpg" alt="">
-                                            <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                                            <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...
-                                            </p>
-                                        </div>
 
 
-                                        
+                        </div><!-- End sidebar recent posts-->
 
-                                      
-
-                                    
-
-                                    </div><!-- End sidebar recent posts-->
-
-                                </div>
-                            </div><!-- End News & Updates -->
-
-                        </div><!-- End Right side columns -->
-
+                        <div class="row card w-100">
+                            <div class="col-12">
+                                {{ $newEvent->links() }}
+                            </div>
+                        </div>
                     </div>
-                </section>
-
-            </main>
+                </div>
+            </div>
+            <!--/ Transactions -->
         </div>
-    </section>
+
+    </div>
+
+
+
+
+
+
+
 @endsection
+
+
+@push('additional_css')
+    <style>
+        .text-muted {
+            display: none;
+        }
+    </style>
+@endpush
