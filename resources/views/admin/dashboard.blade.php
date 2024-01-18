@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                                 <span class="fw-medium d-block mb-1">Total Student's</span>
-                                <h3 class="card-title mb-2" style="color: rgb(11, 253, 47);">12,68</h3>
+                                <h3 class="card-title mb-2" style="color: rgb(11, 253, 47);">{{ $admissioncount }}</h3>
                                 {{-- <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +72.80%</small> --}}
                             </div>
                         </div>
@@ -82,8 +82,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <span class="fw-medium d-block mb-1">Total Student's</span>
-                                <h3 class="card-title mb-2" style="color: rgb(11, 253, 47);">12,68</h3>
+                                <span class="fw-medium d-block mb-1">Total Staff</span>
+                                <h3 class="card-title mb-2" style="color: rgb(11, 253, 47);">{{ $adminCount }}</h3>
                                 {{-- <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +72.80%</small> --}}
                             </div>
                         </div>
@@ -253,6 +253,12 @@
                             @endforelse
 
 
+                            <div class="row card w-100 mb-3">
+                                <div class="col-12">
+                                    {{ $newEvent->links() }}
+                                </div>
+                            </div>
+
                             <div class="event-btn d-flex justify-content-between">
                                 <a href="{{ route('admin.event.create') }}" style="width: 48%;"
                                     class="btn btn-primary ">Add Event
@@ -269,11 +275,7 @@
 
                         </div><!-- End sidebar recent posts-->
 
-                        <div class="row card w-100">
-                            <div class="col-12">
-                                {{ $newEvent->links() }}
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

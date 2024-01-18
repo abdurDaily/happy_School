@@ -76,11 +76,10 @@ class RoleController extends Controller
     //* PERMISSION TEST
     public function permissionTest(Request $request, $id){
         $role = Role::find($id);
-        $permissionIds = array_map('intval', $request->permission_id);
+        $permissionIds = array_map('intval', $request->permission_id ?? []);
         $role->syncPermissions($permissionIds);
         $role->save();
         Alert::success('success!', 'permission inserted!');
         return redirect()->route('admin.role.create');
-    //   dd($request->all());
     }
 }

@@ -9,6 +9,7 @@ use App\Models\Admin\Facultystaff;
 use App\Models\Admin\Newsevent;
 use App\Models\Admin\Notice;
 use App\Models\Admin\Routine;
+use App\Models\Frontend\Admission;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -22,14 +23,23 @@ class DashboardController extends Controller
                 ->simplePaginate(7);
         $newEvent = Newsevent::select('id','event_title','event_img')
                 ->latest()
-                ->simplePaginate(4);
+                ->take(7)
+                ->paginate(4);
+        // dd($newEvent);
         $eventCount =  Newsevent::select('id','event_title','event_img')
                 ->count();
         $facultyStaff = Facultystaff::all();
         $routine = Routine::select('id','routine_title', 'routine_image')
                 ->latest()
                 ->simplePaginate(7);
-        return view('admin.dashboard',compact('totalEmployee','notice','newEvent','eventCount', 'facultyStaff','routine'));
+        $admissioncount = Admission::count();
+
+        $adminCount = Admin::count();
+
+        return view('admin.dashboard',compact('totalEmployee',
+        'notice','newEvent','eventCount', 
+        'facultyStaff','routine',
+        'admissioncount','adminCount'));
     }
 
 
