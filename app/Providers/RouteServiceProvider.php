@@ -49,6 +49,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->name('frontend.')
                 ->group(base_path('routes/frontend.php'));
+
+            //* ATTENDANCE ROUTE'S
+            Route::middleware('web')
+                 ->group(base_path('routes/attendance.php'));
         });
     }
 }

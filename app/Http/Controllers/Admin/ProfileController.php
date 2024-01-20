@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Admin\Admin;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {
     //Profile Page
-    public function index(){
+    public function index($id = null){
+        $data = Admin::all();
+        dd($data);
         return view('admin.profile.admin_profile');
     }
 }

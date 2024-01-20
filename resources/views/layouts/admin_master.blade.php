@@ -277,6 +277,62 @@
                               </li>
                             </ul>
                           </li>
+
+                          
+                          {{-- ATTENDANCE START --}}
+                          <li class="menu-item">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                              <i style="font-size: 18px;" class="fa-solid fa-address-card"></i> &nbsp;&nbsp;
+                              <div data-i18n="Front Pages">Attendance</div>
+                            </a>
+                            <ul class="menu-sub">
+                                
+                                <li class="menu-item">
+                                  <a href="{{ route('add.new.batch') }}" class="menu-link">
+                                    <div data-i18n="Pricing">Add Batch</div>
+                                  </a>
+                                </li>
+
+                                <li class="menu-item">
+                                  <a href="{{ route('admit.student') }}" class="menu-link">
+                                    <div data-i18n="Pricing">Admit Student</div>
+                                  </a>
+                                </li>
+
+
+                                <li class="menu-item">
+                                  <a href="{{ route('present.students') }}" class="menu-link">
+                                    <div data-i18n="Pricing">Provide Attendance</div>
+                                  </a>
+                                </li>
+
+
+                                <li class="menu-item">
+                                  <a href="{{ route('check.present') }}" class="menu-link">
+                                    <div data-i18n="Pricing">Check Attendance</div>
+                                  </a>
+                                </li>
+
+
+
+                                <li class="menu-item">
+                                  <a href="{{ route('attendance.record.check') }}" class="menu-link">
+                                    <div data-i18n="Pricing">Edit Attendance</div>
+                                  </a>
+                                </li>
+
+
+
+                                <li class="menu-item">
+                                  <a href="{{ route('attendance.pdf') }}" class="menu-link">
+                                    <div data-i18n="Pricing">PDF download</div>
+                                  </a>
+                                </li>
+
+
+
+                            </ul>
+                          </li>
             @endif
 
 
@@ -340,14 +396,11 @@
                       <div data-i18n="Pricing">Add Category</div>
                     </a>
                   </li>
-                  
-                  {{-- <li class="menu-item">
-                    <a href="{{ route('admin.list.about.galary') }}" class="menu-link">
-                      <div data-i18n="Pricing">Galary List</div>
-                    </a>
-                  </li> --}}
               </ul>
             </li>
+
+
+            
 
             
             

@@ -31,6 +31,10 @@ class DatabaseSeeder extends Seeder
             AboutgallerySeeder::class,
             CategorySeeder::class,
             AdmissionSeeder::class,  //*FrontEnd 
+            AddBatchNumberSeeder::class,
+            AdmitStudentsSeeder::class,
+            SemesterSeeder::class,
+            SubjectSeeder::class,
         ]);
     }
 }
